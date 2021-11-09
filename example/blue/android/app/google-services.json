@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "524550777596",
+    "project_id": "osasmobile-99cb1",
+    "storage_bucket": "osasmobile-99cb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524550777596:android:70f9ad2572961a2322c579",
+        "android_client_info": {
+          "package_name": "com.onindonesia.osas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524550777596-ja1n43rk23co7qce16nsu53rp04iocnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOR-4L7CRURjtkf0iilX32nxE-va-y9Hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524550777596-ja1n43rk23co7qce16nsu53rp04iocnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
