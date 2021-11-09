@@ -11,7 +11,6 @@ import 'package:esc_pos_bluetooth/esc_pos_bluetooth.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:oktoast/oktoast.dart';
 
-
 class PrintReceipt extends StatefulWidget {
   // MyHomePage({Key? key, required this.title}) : super(key: key);
   // final String title;
@@ -28,7 +27,7 @@ class _PrintReceiptState extends State<PrintReceipt> {
   @override
   void initState() {
     super.initState();
-
+    _startScanDevices();
     printerManager.scanResults.listen((devices) async {
       // print('UI: Devices found ${devices.length}');
       setState(() {
@@ -72,7 +71,7 @@ class _PrintReceiptState extends State<PrintReceipt> {
     setState(() {
       _devices = [];
     });
-    printerManager.startScan(Duration(seconds: 4));
+    printerManager.startScan(Duration(seconds: 2));
   }
 
   void _stopScanDevices() {
@@ -287,7 +286,6 @@ class _PrintReceiptState extends State<PrintReceipt> {
       '0',
       '0',
       '2',
-      '%'
     ];
 
     // bytes += generator.barcode(Barcode.code39(barData),height:100);
@@ -694,7 +692,7 @@ class _PrintReceiptState extends State<PrintReceipt> {
             align: PosAlign.left,
           )),
     ]);
-    
+
     bytes += generator.row([
       PosColumn(
           text: 'Insurance: ',
@@ -707,7 +705,7 @@ class _PrintReceiptState extends State<PrintReceipt> {
             align: PosAlign.left,
           )),
     ]);
-    
+
 //     bytes += generator.row([
 //  PosColumn(text: 'Weight', width: 6, styles: PosStyles(align: PosAlign.left, bold: true)),
 
@@ -881,6 +879,74 @@ class _PrintReceiptState extends State<PrintReceipt> {
     return bytes;
   }
 
+  printerList() {
+    if (_devices.length > 0)
+      for (var i = 0; i < _devices.length; i++) {
+        if (_devices[i].name == "M300eL") {
+          return InkWell(
+            onTap: () => _testPrint(_devices[i]),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.print, size: 100),
+                Text("Printer:"),
+                Text(_devices[i].name ?? ""),
+                // Text(_devices[i].address!),
+                Text(
+                  'Tekan Gambar Untuk Cetak',
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return Text('Tidak ada printer');
+        }
+      }
+    else {
+      return Text('Scanning...');
+    }
+    // return ListView.builder(
+    //     itemCount: _devices.length,
+    //     itemBuilder: (BuildContext context, int index) {
+    //       return _devices[index].name == "M300eL"
+    //           ? InkWell(
+    //               onTap: () => _testPrint(_devices[index]),
+    //               child: Column(
+    //                 children: <Widget>[
+    //                   Container(
+    //                     height: 60,
+    //                     padding: EdgeInsets.only(left: 10),
+    //                     alignment: Alignment.centerLeft,
+    //                     child: Row(
+    //                       children: <Widget>[
+    //                         Icon(Icons.print),
+    //                         SizedBox(width: 10),
+    //                         Expanded(
+    //                           child: Column(
+    //                             crossAxisAlignment: CrossAxisAlignment.start,
+    //                             mainAxisAlignment: MainAxisAlignment.center,
+    //                             children: <Widget>[
+    //                               Text(_devices[index].name ?? ''),
+    //                               Text(_devices[index].address!),
+    //                               Text(
+    //                                 'Click to print a test receipt',
+    //                                 style: TextStyle(color: Colors.grey[700]),
+    //                               ),
+    //                             ],
+    //                           ),
+    //                         )
+    //                       ],
+    //                     ),
+    //                   ),
+    //                   Divider(),
+    //                 ],
+    //               ),
+    //             )
+    //           : Text('Printer tidak ditemukan');
+    //     });
+  }
+
   void _testPrint(PrinterBluetooth printer) async {
     printerManager.selectPrinter(printer);
 
@@ -907,45 +973,35 @@ class _PrintReceiptState extends State<PrintReceipt> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("test"),
+        title: Text("Driver"),
       ),
-      body: ListView.builder(
-          itemCount: _devices.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () => _testPrint(_devices[index]),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 60,
-                    padding: EdgeInsets.only(left: 10),
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: <Widget>[
-                        Icon(Icons.print),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(_devices[index].name ?? ''),
-                              Text(_devices[index].address!),
-                              Text(
-                                'Click to print a test receipt',
-                                style: TextStyle(color: Colors.grey[700]),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Divider(),
-                ],
+      body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        printerList(),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Material(
+            borderRadius: BorderRadius.circular(30.0),
+            shadowColor: Colors.lightBlueAccent.shade100,
+            elevation: 5.0,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.blue,
               ),
-            );
-          }),
+              child: MaterialButton(
+                minWidth: 330.0,
+                height: 42.0,
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/main', (route) => false);
+                },
+                child: Text('Kembali', style: TextStyle(color: Colors.white)),
+              ),
+            ),
+          ),
+        )
+      ])),
       floatingActionButton: StreamBuilder<bool>(
         stream: printerManager.isScanningStream,
         initialData: false,
