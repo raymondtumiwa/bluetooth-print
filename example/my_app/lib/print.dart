@@ -11,7 +11,6 @@ import 'package:esc_pos_bluetooth/esc_pos_bluetooth.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:oktoast/oktoast.dart';
 
-
 class PrintReceipt extends StatefulWidget {
   // MyHomePage({Key? key, required this.title}) : super(key: key);
   // final String title;
@@ -694,7 +693,7 @@ class _PrintReceiptState extends State<PrintReceipt> {
             align: PosAlign.left,
           )),
     ]);
-    
+
     bytes += generator.row([
       PosColumn(
           text: 'Insurance: ',
@@ -707,7 +706,7 @@ class _PrintReceiptState extends State<PrintReceipt> {
             align: PosAlign.left,
           )),
     ]);
-    
+
 //     bytes += generator.row([
 //  PosColumn(text: 'Weight', width: 6, styles: PosStyles(align: PosAlign.left, bold: true)),
 

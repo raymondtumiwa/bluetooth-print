@@ -535,13 +535,14 @@ class PickupDetailState extends State<PickUpDetail> {
               )),
           MaterialButton(
               onPressed: () {
-                isJobExist &&
-                        snapshot.data!.packageInfo.length ==
-                            snapshot.data!.packageInfo
-                                .where((e) => e.status)
-                                .length
-                    ? dialogConfirmCheckout(snapshot.data!, context: context)
-                    : _dialogError('Mohon Validasi Packet Terlebih Dahulu !');
+                // isJobExist &&
+                //         snapshot.data!.packageInfo.length ==
+                //             snapshot.data!.packageInfo
+                //                 .where((e) => e.status)
+                //                 .length
+                //     ? dialogConfirmCheckout(snapshot.data!, context: context)
+                //     : _dialogError('Mohon Validasi Packet Terlebih Dahulu !');
+                Navigator.pushNamed(context, '/print');
               },
               child: Container(
                 decoration: BoxDecoration(
