@@ -207,59 +207,58 @@ class _PickUpCheckoutState extends State<PickUpCheckout> {
                                     ],
                                   )
                                 ])),
-                        MaterialButton(onPressed: () {
-                          setState(() {
-                            _isInAsyncCall = true;
-                          });
-                          //   OnRest.instance.pingServerApiSat().then((value) {
-                          //     OnRest.instance
-                          //         .pingServerApiOndel()
-                          //         .then((value) {
-                          //       CheckOutDriverBody body =
-                          //           CheckOutDriverBody.fromJson({
-                          //         'amount': widget.totalPrice,
-                          //         'service': 'ONDELIVERY',
-                          //         'source': _value,
-                          //         'client': widget.bookingDetail.user
-                          //       });
-                          //       paymentConfirmation(body);
-                          //     }).catchError((errOndel) {
-                          //       print("ApiOndel Error");
-                          //       print(errOndel);
-                          //       setState(() {
-                          //         _isInAsyncCall = false;
-                          //       });
-                          //     });
-                          //   }).catchError((errApisat) {
-                          //     print("ApiSat Error");
-                          //     print(errApisat);
-                          //     setState(() {
-                          //       _isInAsyncCall = false;
-                          //     });
-                          //   });
-                          // },
-                          child:
-                          Container(
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: <Color>[
-                                    Color(0xFF1254A0),
-                                    Color(0xFF15bae8),
-                                  ]),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Center(
-                                child: Text('Bayar',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 12))),
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            width: MediaQuery.of(context).size.width * 0.23,
-                          );
-                        })
+                        MaterialButton(
+                            onPressed: () {
+                              setState(() {
+                                _isInAsyncCall = true;
+                              });
+                              OnRest.instance.pingServerApiSat().then((value) {
+                                OnRest.instance
+                                    .pingServerApiOndel()
+                                    .then((value) {
+                                  CheckOutDriverBody body =
+                                      CheckOutDriverBody.fromJson({
+                                    'amount': widget.totalPrice,
+                                    'service': 'ONDELIVERY',
+                                    'source': _value,
+                                    'client': widget.bookingDetail.user
+                                  });
+                                  paymentConfirmation(body);
+                                }).catchError((errOndel) {
+                                  print("ApiOndel Error");
+                                  print(errOndel);
+                                  setState(() {
+                                    _isInAsyncCall = false;
+                                  });
+                                });
+                              }).catchError((errApisat) {
+                                print("ApiSat Error");
+                                print(errApisat);
+                                setState(() {
+                                  _isInAsyncCall = false;
+                                });
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    colors: <Color>[
+                                      Color(0xFF1254A0),
+                                      Color(0xFF15bae8),
+                                    ]),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Center(
+                                  child: Text('Bayar',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          fontSize: 12))),
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              width: MediaQuery.of(context).size.width * 0.23,
+                            )),
                       ],
                     )
                   : Center(

@@ -43,12 +43,14 @@ dependencies:
   reactive_forms: ^10.6.4
   webview_flutter: ^2.3.1
   #giffy_dialog: ^1.8.0
-  esc_pos_bluetooth:
-    path: ../../
-  oktoast: ^3.0.0
-  image: ^3.0.2
   qr_flutter: ^4.0.0
   path_provider: ^2.0.2
+  image: ^3.0.2
+  oktoast: ^3.0.0
+  esc_pos_bluetooth:
+    path: ../../
+  esc_pos_utils: ^1.1.0
+
 
 dev_dependencies:
   flutter_test:

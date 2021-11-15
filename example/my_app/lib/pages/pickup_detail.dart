@@ -7,6 +7,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:my_app/pages/pickup.dart';
 import 'package:my_app/pages/pickup_checkout.dart';
 import 'package:my_app/pages/pickup_validation.dart';
+import 'package:my_app/print.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:my_app/models/pickup.dart';
@@ -120,17 +121,16 @@ class PickupDetailState extends State<PickUpDetail> {
             bookingDetail.packageInfo.map((e) => e.fixedPrice).toList();
         int totalPrice = arrTotal.reduce((a, b) => a + b);
         return Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => PickUpCheckout(
-                      bookingDetail: bookingDetail,
-                      totalPrice: totalPrice,
-                    ))).then((value) {
-          if (value) {
-            print(PickUp.of(context));
-            Navigator.of(context).pop();
-          }
-        });
+            context, MaterialPageRoute(builder: (context) => PrintReceipt()));
+        //         PickUpCheckout(
+        //               bookingDetail: bookingDetail,
+        //               totalPrice: totalPrice,
+        //             ))).then((value) {
+        //   if (value) {
+        //     print(PickUp.of(context));
+        //     Navigator.of(context).pop();
+        //   }
+        // });
       }
       return value;
     });
@@ -535,14 +535,13 @@ class PickupDetailState extends State<PickUpDetail> {
               )),
           MaterialButton(
               onPressed: () {
-                // isJobExist &&
-                //         snapshot.data!.packageInfo.length ==
-                //             snapshot.data!.packageInfo
-                //                 .where((e) => e.status)
-                //                 .length
-                //     ? dialogConfirmCheckout(snapshot.data!, context: context)
-                //     : _dialogError('Mohon Validasi Packet Terlebih Dahulu !');
-                Navigator.pushNamed(context, '/print');
+                isJobExist &&
+                        snapshot.data!.packageInfo.length ==
+                            snapshot.data!.packageInfo
+                                .where((e) => e.status)
+                                .length
+                    ? dialogConfirmCheckout(snapshot.data!, context: context)
+                    : _dialogError('Mohon Validasi Packet Terlebih Dahulu !');
               },
               child: Container(
                 decoration: BoxDecoration(

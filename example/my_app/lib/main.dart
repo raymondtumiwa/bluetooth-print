@@ -4,7 +4,6 @@ import 'package:my_app/pages/delivery.dart';
 import 'package:my_app/pages/pickup.dart';
 import 'package:my_app/pages/splash.dart';
 import 'package:my_app/pages/test.dart';
-import 'package:my_app/print.dart';
 import 'package:my_app/user/login.dart';
 import 'package:my_app/user/sign_up.dart';
 
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
         '/delivery': (context) => DeliveryPage(),
         '/test': (context) => const TestPage(),
         '/splash': (context) => SplashScreen(),
-        '/print': (context) => PrintReceipt(),
 
         // '/details': (context) => DetailsPage(),
         // '/confirm': (context) => Confirm(),
