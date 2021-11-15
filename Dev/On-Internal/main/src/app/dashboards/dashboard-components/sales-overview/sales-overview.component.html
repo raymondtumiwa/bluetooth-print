@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Sales Overview</mat-card-title>
+        <mat-card-subtitle>Ample Admin Vs Material Admin</mat-card-subtitle>
+        <div id="chart" class="d-flex flex-column">
+            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                [yaxis]="chartOptions.yaxis" [legend]="chartOptions.legend" [fill]="chartOptions.fill"
+                [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip" [xaxis]="chartOptions.xaxis"
+                [grid]="chartOptions.grid">
+            </apx-chart>
+        </div>
+        <ul class="list-inline text-center">
+            <li>
+                <h6 class="text-muted text-info m-0">
+                    <i class="fa fa-circle font-10 m-r-10 "></i>Ample</h6>
+            </li>
+            <li>
+                <h6 class="text-muted  text-success  m-0">
+                    <i class="fa fa-circle font-10 m-r-10"></i>Pixel</h6>
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>

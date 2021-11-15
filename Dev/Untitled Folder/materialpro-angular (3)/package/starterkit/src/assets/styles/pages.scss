@@ -1,0 +1,618 @@
+/*
+Template Name: Material Pro Admin
+Author: Wrappixel
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+
+/*============================================================== 
+ For all pages 
+ ============================================================== */
+
+/*******************
+ Main container
+*******************/
+
+.page-breadcrumb {
+  background: $white;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-drawer-container {
+  background: $bodycolor;
+}
+
+html .page-wrapper {
+  height: calc(100vh - 64px);
+
+  .page-content {
+    padding: 15px;
+  }
+}
+
+/*******************
+ Login register
+*******************/
+.login-register {
+  height: 100vh;
+  display: flex;
+  background-size: cover;
+  align-items: center;
+
+  .mat-card {
+    margin: 0px 15px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .login-register-box {
+    max-width: 400px;
+    min-width: 280px;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+
+  .support-text {
+    margin-top: -15px;
+    display: block;
+    padding-bottom: 15px;
+  }
+}
+
+.error-card {
+  h1 {
+    font-size: 210px;
+    font-weight: 900;
+    line-height: 210px;
+    margin: 0px;
+    text-shadow: 4px 5px 1px #b3bbbf;
+  }
+}
+
+.ngx-datatable.material {
+  box-shadow: none;
+  border: 1px solid $border;
+}
+
+/*******************
+ Calendar page
+*******************/
+.cal-event-action {
+  text-decoration: none;
+  margin: 0 3px;
+}
+
+.cal-header {
+  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+}
+
+.act {
+  color: white;
+
+  &:hover {
+    color: aqua;
+  }
+}
+
+/*******************
+ Mail page
+*******************/
+.icon-box {
+  width: 20%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*******************
+ Mail page
+*******************/
+.email-box {
+  border: 1px solid $border;
+  height: calc(100vh - 180px);
+}
+
+.email-sidebar {
+  .mat-drawer-inner-container {
+    overflow: visible;
+  }
+
+  border-right: 1px solid $border;
+  width: 300px;
+
+  .d-flex {
+    display: flex;
+    padding: 15px 0px;
+    cursor: pointer;
+  }
+
+  .selected {
+    .d-flex {
+      background: $light;
+    }
+  }
+
+  .icon-avatar {
+    width: 60px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .mail-title {
+    font-weight: 500;
+  }
+
+  .text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 165px;
+    text-overflow: ellipsis;
+  }
+
+  .avatar {
+    width: 40px;
+    border-radius: 100%;
+  }
+}
+
+.email-right-panel {
+  padding: 30px;
+  background: $light;
+
+  .avatar-lg {
+    width: 100px;
+    border-radius: 100%;
+  }
+
+  .row {
+    overflow: hidden;
+  }
+
+  .col-md-2 {
+    width: 20%;
+    padding: 10px;
+    float: $lft;
+  }
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.bottom-right {
+  position: absolute !important;
+  right: 40px;
+  bottom: 40px;
+  z-index: 10;
+}
+
+.chat-right-panel {
+  .top-avatar {
+    img {
+      width: 40px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.chat-middle-box {
+  border-left: 1px solid $border;
+  background: $white;
+  margin-bottom: 0px !important;
+}
+
+.chat-footer {
+  padding: 10px 15px !important;
+  background: $white;
+  border-top: 1px solid $border;
+  border-left: 1px solid $border;
+}
+
+.chat-list {
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 1rem;
+  //padding: 0 2rem;
+  display: flex;
+
+  &.even {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+.chat-block {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: $light;
+  border-radius: 6px;
+
+  img {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+}
+
+.chat-date {
+  font-size: 12px;
+  color: $muted;
+}
+
+/*******************
+Chartistt chart css
+******************/
+.barchrt {
+  .ct-series-a .ct-bar {
+    stroke: $success;
+  }
+
+  .ct-series-b .ct-bar {
+    stroke: $info;
+  }
+}
+
+.linearea {
+  height: 280px;
+
+  .ct-series-a .ct-area {
+    fill-opacity: 0.05;
+    fill: $success;
+  }
+
+  .ct-series-a .ct-line,
+  .ct-series-a .ct-point {
+    stroke: $success;
+    stroke-width: 2px;
+  }
+
+  .ct-series-b .ct-area {
+    fill: $info;
+    fill-opacity: 0.1;
+  }
+
+  .ct-series-b .ct-line,
+  .ct-series-b .ct-point {
+    stroke: $info;
+    stroke-width: 2px;
+  }
+
+  .ct-series-c .ct-area {
+    fill: $danger;
+    fill-opacity: 0.1;
+  }
+
+  .ct-series-c .ct-line,
+  .ct-series-c .ct-point {
+    stroke: $danger;
+    stroke-width: 2px;
+  }
+
+  .ct-series-a .ct-point,
+  .ct-series-b .ct-point,
+  .ct-series-c .ct-point {
+    stroke-width: 6px;
+  }
+}
+
+.piechart {
+  .ct-series-a .ct-slice-donut {
+    stroke: $info;
+  }
+
+  .ct-series-b .ct-slice-donut {
+    stroke: $success;
+  }
+
+  .ct-series-c .ct-slice-donut {
+    stroke: $purple;
+  }
+
+  .ct-series-d .ct-slice-donut {
+    stroke: $light;
+  }
+
+  .ct-series-e .ct-slice-donut {
+    stroke: $warning;
+  }
+}
+
+/*******************
+Pricing scss
+******************/
+html {
+  .popular-plan {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+
+  .price-listing {
+    margin-bottom: 30px;
+
+    .mat-list-item {
+      height: auto;
+
+      .mat-list-item-content {
+        display: block;
+        padding: 20px 0;
+      }
+    }
+  }
+}
+
+/*******************
+Chartis tooltip scss
+******************/
+.chartist-tooltip {
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
+  min-width: 50px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #313131;
+  color: $white;
+  font-weight: 500;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+/*.chartist-tooltip:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: #313131; }
+*/
+.chartist-tooltip.tooltip-show {
+  opacity: 1;
+}
+
+.ct-area,
+.ct-line {
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=chartist-plugin-tooltip.css.map */
+.no-wrap {
+  td,
+  .ng-star-inserted {
+    white-space: nowrap;
+  }
+}
+
+/*******************
+Smart table
+******************/
+.smart-table tr td,
+.smart-table tr th {
+  padding: 15px !important;
+  text-align: left;
+}
+
+.ng2-smart-action-add-add {
+  color: $white !important;
+  background: $themecolor;
+  padding: 8px 15px;
+  border-radius: $radius;
+  white-space: nowrap;
+}
+
+.ng2-smart-pagination-nav {
+  margin-left: auto;
+}
+
+.ng2-smart-pagination-nav .pagination > li > a {
+  line-height: 1rem;
+}
+
+.ng2-smart-filter .form-control {
+  border: 1px solid $border;
+  border-radius: 0.25rem;
+  min-height: 38px;
+}
+
+.form-control {
+  border: 1px solid $border;
+}
+
+/**********************
+Overall Responsive table
+***********************/
+
+.responsive-table {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  .mat-cell:first-of-type,
+  .mat-footer-cell:first-of-type,
+  .mat-header-cell:first-of-type {
+    padding-left: 0;
+  }
+
+  .header-label {
+    display: none;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 100%;
+  }
+}
+
+.table-responsive {
+  overflow: auto;
+}
+
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: $themecolor;
+  background-color: $white;
+  border: 1px solid $border;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: $bodytext;
+  text-decoration: none;
+  background-color: $light;
+  border-color: $border;
+}
+
+.page-link:focus {
+  z-index: 2;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.page-link:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: $white;
+  background-color: $themecolor;
+  border-color: $themecolor;
+}
+
+.page-item.disabled .page-link {
+  color: $muted;
+  pointer-events: none;
+  cursor: auto;
+  background-color: $white;
+  border-color: $border;
+}
+
+.ticket-list {
+  td.mat-cell,
+  td.mat-footer-cell,
+  th.mat-header-cell {
+    padding: 0 15px !important;
+  }
+}
+
+.employee-list {
+  td.mat-cell,
+  td.mat-footer-cell,
+  th.mat-header-cell {
+    padding: 15px !important;
+  }
+
+  .d-flex {
+    align-items: center;
+  }
+}
+
+.chat-app {
+  .mat-list-item {
+    &.active {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+}
+
+.notes-app {
+  .mat-list-base .mat-list-item .mat-list-item-content,
+  .mat-list-base .mat-list-option .mat-list-item-content {
+    padding: 0 !important;
+  }
+
+  .mat-drawer-content {
+    height: calc(100vh - 190px) !important;
+  }
+
+  &.mat-card .mat-card-content {
+    padding: 0;
+    height: calc(100% - 64px);
+  }
+
+  .mat-input-element {
+    font-size: 14px !important;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-label {
+    top: 33px !important;
+    font-size: 14px !important;
+  }
+}
+
+.notes-color-panel {
+  min-width: 96px !important;
+
+  .mat-menu-content {
+    display: flex;
+
+    .mat-menu-item {
+      padding: 0 8px !important;
+    }
+
+    .mat-flat-button {
+      min-width: 20px !important;
+      padding: 0 !important;
+    }
+  }
+}
+
+.course-app {
+  .course-header {
+    .mat-card-header-text {
+      width: 100%;
+    }
+  }
+
+  .mat-card-content {
+    margin-bottom: 0 !important;
+  }
+}

@@ -1,0 +1,61 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row wrap" class="align-items-center">
+          <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+            <mat-form-field>
+              <input matInput class="p-b-0" placeholder="Search here..." [(ngModel)]="searchText">
+            </mat-form-field>
+          </div>
+          <div fxFlex.gt-md="75" class="text-right">
+            <button mat-raised-button (click)="openDialog('Add',{})" color="primary">Add Contact</button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <div fxFlex.gt-lg="25" fxFlex.gt-md="33.33" fxFlex.gt-xs="100" fxFlex="100"
+    *ngFor="let contact of contacts | filter:searchText">
+    <mat-card>
+      <mat-card-content class="text-center">
+        <img src="{{ contact.contactimg }}" class="img-circle border p-5" width="100">
+        <h4 class="card-title m-t-15 m-b-0">{{ contact.contactname }}</h4>
+        <small class="text-muted">{{ contact.contactpost }}</small>
+        <div class="m-t-20">
+          <button mat-raised-button class="m-r-5" color="primary">Chat</button>
+          <button mat-raised-button color="accent">Follow</button>
+        </div>
+        <div class="m-t-20">
+          <span>
+            {{ contact.contactadd }}
+            <br />
+            <br />
+            <i class="fa fa-phone m-r-10"></i>{{ contact.contactno }}</span>
+        </div>
+      </mat-card-content>
+      <div fxLayout="row wrap" class="text-center bg-light border-top">
+        <div fxFlex.gt-xs="33.33" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a href="javascript:void(0)" class="link">
+            <i class="fa fa-instagram m-r-10 m-t-0 m-b-5"></i>
+            {{ contact.contactinstagram }}
+          </a>
+        </div>
+        <div fxFlex.gt-xs="33.33" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a href="javascript:void(0)" class="link">
+            <i class="fa fa-linkedin m-r-10 m-t-0 m-b-5"></i>
+            {{ contact.contactlinkedin }}
+          </a>
+        </div>
+        <div fxFlex.gt-xs="33.33" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a href="javascript:void(0)" class="link">
+            <i class="fa fa-facebook m-r-10 m-t-0 m-b-5"></i>
+            {{ contact.contactfacebook }}
+          </a>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

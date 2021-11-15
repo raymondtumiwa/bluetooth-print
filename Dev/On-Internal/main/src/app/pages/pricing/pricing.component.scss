@@ -1,0 +1,37 @@
+@import '../../../assets/styles/variable';
+.pricing-box {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.pricing-plan {
+  mat-card-title {
+    margin-top: 30px;
+  }
+  h1 {
+    margin: 7px 0;
+    font-size: 55px;
+  }
+  sup {
+    font-size: 18px;
+  }
+  .price-listing {
+    .mat-list-item {
+      .mat-list-item-content {
+        padding: 15px 0;
+      }
+    }
+  }
+  .pop-tag {
+    padding: 0 5px;
+    border-radius: $radius;
+    background: $themecolor;
+    position: absolute;
+    top: -13px;
+    color: $white;
+    font-size: 12px;
+    width: 100px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,2 @@
+-keep class com.mr.flutter.plugin.filepicker.** { *; }
+-keep class androidx.lifecycle.** { *; }

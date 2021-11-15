@@ -1,0 +1,123 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+	<div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex="100">
+		<mat-card class="mat-card-top chat-app position-relative">
+
+			<mat-sidenav-container
+				[ngClass]="{ 'side-panel-opened': sidePanelOpened, 'side-panel-closed': !sidePanelOpened }"
+				style="min-height:80vh">
+				<mat-sidenav #chatnav right [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()"
+					(open)="sidePanelOpened = true" (close)="sidePanelOpened = false" position="end">
+					<mat-toolbar class="no-shadow bg-white">
+						<div fxLayout="row" fxFlex="100">
+							<h4>Todo App</h4>
+
+						</div>
+					</mat-toolbar>
+					<mat-nav-list>
+						<mat-list-item (click)="selectionlblClick('all')" class="all font-normal"
+							[class.active]="selectedCategory === 'all'">
+							All
+							<mat-chip-list class="ml-auto">
+								<mat-chip color="primary" selected>{{todos.length}}</mat-chip>
+							</mat-chip-list>
+						</mat-list-item>
+						<mat-list-item [class.active]="selectedCategory === 'uncomplete'" class="incomplete font-normal"
+							(click)="selectionlblClick('uncomplete')">
+							Incompleted
+							<mat-chip-list class="ml-auto">
+								<mat-chip color="warn" selected>{{ remainingList() }}</mat-chip>
+							</mat-chip-list>
+						</mat-list-item>
+						<mat-list-item [class.active]="selectedCategory === 'complete'" class="complete font-normal"
+							(click)="selectionlblClick('complete')">
+							Completed
+							<mat-chip-list class="ml-auto">
+								<mat-chip color="accent" selected>{{todos.length - remainingList()}}</mat-chip>
+							</mat-chip-list>
+						</mat-list-item>
+					</mat-nav-list>
+				</mat-sidenav>
+				<mat-toolbar class="bg-light b-b no-shadow chat-right-panel p-l-25">
+					<div fxLayout="row" fxFlex="100" class="align-items-center">
+
+						<div class="d-flex align-items-center w-100">
+							<mat-checkbox (change)="allTodos()" class="font-normal font-16">Mark All
+							</mat-checkbox>
+							<!-- <label for="all">Mark All</label> -->
+							<div class="ml-auto d-flex align-items-center">
+
+								<mat-chip-list>
+									<mat-chip color="warn" selected>{{ remainingList() }} Tasks left</mat-chip>
+								</mat-chip-list>&nbsp;&nbsp;
+								<button (click)="chatnav.toggle()" color="primary" class="ml-1 shadow-none"
+									mat-mini-fab>
+									<mat-icon>short_text</mat-icon>
+								</button>
+							</div>
+						</div>
+					</div>
+				</mat-toolbar>
+				<div class="b-b p-15 bg-white">
+					<form [formGroup]="inputFg" class="d-md-flex align-items-center">
+						<mat-form-field class="p-r-15 m-r-15">
+							<mat-label>Add new Todo</mat-label>
+							<input matInput #inputData [(ngModel)]="searchText" formControlName='mess'
+								(keyup.enter)="addTodo(inputData.value)">
+						</mat-form-field>
+						<div class="ml-auto">
+							<button mat-raised-button color="primary" [disabled]="!searchText" class="shadow-none"
+								id="btnAddTodo" (click)="addTodo(inputData.value)">Add Todo</button>
+						</div>
+
+					</form>
+				</div>
+				<mat-card-content class="chat-middle-box" style="min-height:70vh">
+
+					<div *ngFor="let todo of copyTodos;let i=index" class="todo-item py-3 pl-3 border-bottom">
+						<div class="todo-item-left d-md-flex w-100">
+							<div>
+								<mat-checkbox [(ngModel)]="todo.completionStatus">{{todo.message}}</mat-checkbox>
+								<p class="m-t-0 font-12 text-muted font-normal p-l-25">{{todo.date | date}}</p>
+							</div>
+							<div class="todo-item-label w-100">
+								<div class="d-flex align-items-start" *ngIf="!todo.edit" (click)="editTodo(todo.id)">
+
+									<div class="ml-auto px-3 mr-2">
+										<a href="javascript: void(0);" (click)='editTodo(todo.id,"edit")'
+											class="link m-r-10" placement="top" ngbTooltip="Edit">
+											<mat-icon>edit</mat-icon>
+										</a>
+										<a href="javascript: void(0);" class="link text-danger" (click)='deleteTodo(i)'
+											placement="top" ngbTooltip="Delete">
+											<mat-icon>delete_outline</mat-icon>
+										</a>
+									</div>
+								</div>
+								<div class="d-flex align-items-start edit-view" *ngIf="todo.edit">
+
+									<mat-form-field>
+										<mat-label></mat-label>
+										<input matInput class="form-control" [(ngModel)]="todo.message" />
+									</mat-form-field>
+
+									<!-- <input type="text" [(ngModel)]="todo.message" class="form-control" /> -->
+									<div class="ml-auto d-flex">
+										<a href="javascript: void(0);" (click)='editTodo(todo.id,"save")'
+											class="link m-r-10" placement="top" ngbTooltip="Save">
+											<mat-icon>done_all</mat-icon>
+										</a>
+										<a href="javascript: void(0);" class="link text-danger" (click)='deleteTodo(i)'
+											placement="top" ngbTooltip="Delete">
+											<mat-icon>delete_outline</mat-icon>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</mat-card-content>
+			</mat-sidenav-container>
+		</mat-card>
+	</div>
+</div>

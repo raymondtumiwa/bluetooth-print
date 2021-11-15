@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Multiple Select</mat-card-title>
+    <ng-multiselect-dropdown
+      [placeholder]="'custom placeholder'"
+      [data]="dropdownList"
+      [(ngModel)]="selectedItems"
+      [settings]="dropdownSettings"
+      (onSelect)="onItemSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+    >
+    </ng-multiselect-dropdown>
+    <div class="m-t-40">
+      <mat-card-title>Single Select</mat-card-title>
+      <ng-multiselect-dropdown
+         name="city"
+         [data]="cities"
+         [(ngModel)]="singleselectedItems"
+         [settings]="singledropdownSettings"
+         (onSelect)="onItemSelect($event)">
+      </ng-multiselect-dropdown>
+    </div>
+  </mat-card-content>
+</mat-card>

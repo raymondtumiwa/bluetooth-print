@@ -1,0 +1,175 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Table dynamically changing the columns displayed</mat-card-title>
+        <div class="m-b-20 m-t-20">
+            <button mat-raised-button (click)="addColumn()"> Add column </button>
+            <button mat-raised-button (click)="removeColumn()"> Remove column </button>
+            <button mat-raised-button (click)="shuffle()"> Shuffle </button>
+        </div>
+
+        <div class="responsive-table">
+            <mat-table #table [dataSource]="data">
+                <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                    <mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">{{column}}:</span>
+                        {{element[column]}} 
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+            </mat-table>
+        </div>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Table with expandable rows </mat-card-title>
+        <div class="responsive-table">
+            <mat-table #table [dataSource]="dataSource" multiTemplateDataRows>
+                <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay1">
+                    <mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">{{column}}:</span>
+                        {{element[column]}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                <ng-container matColumnDef="expandedDetail">
+                    <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay1.length">
+                        <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="example-element-diagram">
+                                <div class="example-element-position"> {{element.position}} </div>
+                                <div class="example-element-theme"> {{element.theme}} </div>
+                                <div class="example-element-name"> {{element.name}} </div>
+                                <div class="example-element-weight"> {{element.weight}} </div>
+                            </div>
+                            <div class="example-element-description">
+                                {{element.description}}
+                                <span class="example-element-description-attribution"> -- Wikipedia </span>
+                            </div>
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay1"></mat-header-row>
+                <mat-row *matRowDef="let element; columns: columnsToDisplay1;" class="example-element-row"
+                    [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = element">
+                </mat-row>
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            </mat-table>
+        </div>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Table with selection </mat-card-title>
+        <div class="responsive-table">
+            <mat-table #table [dataSource]="dataSource2">
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <mat-header-cell *matHeaderCellDef>
+                        <span class="header-label">Choose : </span>
+                        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        </mat-checkbox>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <span class="header-label">Choose : </span>
+                        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+                        </mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">No:</span>{{element.position}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">Name:</span>{{element.name}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">Weight :</span>{{element.weight}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">Symbol :</span> {{element.symbol}} 
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns2;" (click)="selection.toggle(row)">
+                </mat-row>
+            </mat-table>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Table with sorting</mat-card-title>
+        <div class="responsive-table">
+            <mat-table #table [dataSource]="dataSource3" matSort>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="header-label">No :</span> {{element.position}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">Name :</span> {{element.name}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">Weight :</span> {{element.weight}} 
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <span class="header-label">Symbol :</span> {{element.symbol}} 
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns3"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns3;"></mat-row>
+            </mat-table>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,72 @@
+/*
+Template Name: Material Pro Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+/**
+ * Table Of Content
+ *
+ * 	1. Globals
+ *	2. Headers
+ *	3. Navigations
+ *	4. Banners
+ *	5. Footers
+ *	6. app
+ *	7. Widgets
+ *	8. Custom Templates
+ */
+
+@import "variable";
+
+@import "icons/themify-icons/themify-icons.css";
+@import "icons/font-awesome/css/font-awesome.css";
+@import "icons/flag-icon-css/flag-icon.min.css";
+@import "spinner";
+@import "app";
+@import "header";
+@import "widgets";
+
+@import "horizontal.scss";
+
+@import "pages";
+@import "sidebar";
+@import "dark-sidebar";
+@import "responsive";
+@import "rtl";
+
+// Red Theme
+
+.danger {
+  @import "colors/red";
+  @include angular-material-theme($red-app-theme);
+}
+
+// Blue Theme
+
+.blue {
+  @import "colors/blue";
+  @include angular-material-theme($blue-app-theme);
+}
+
+// Green Theme
+
+.green {
+  @import "colors/green";
+  @include angular-material-theme($green-app-theme);
+}
+
+// Dark Theme
+
+.dark {
+	.mat-drawer-container {
+		color: #8999a0 !important;
+	}
+  	@import "colors/dark";
+  	@include angular-material-theme($dark-theme);
+}
+
+$custom-typography: mat-typography-config(
+  $font-family: "Poppins",
+);
+@include mat-core($custom-typography);

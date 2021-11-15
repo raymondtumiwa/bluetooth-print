@@ -1,0 +1,167 @@
+<div class="w-100">
+    <div *ngIf='ms.selectedMail' class="d-flex align-items-center p-12 m-b-5">
+        <button mat-icon-button (click)="removeClass()" class="d-lg-none">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>label</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <span *ngIf="ms.selectedMail.label.indexOf('Personal') != -1">
+                    <mat-checkbox (click)="labelClick('Personal')" checked="true">Personal</mat-checkbox>
+                </span>
+                <span *ngIf="ms.selectedMail.label.indexOf('Personal') === -1">
+                    <mat-checkbox (click)="labelClick('Personal')">Personal</mat-checkbox>
+                </span>
+            </button>
+            <button mat-menu-item>
+                <span *ngIf="ms.selectedMail.label.indexOf('Work') != -1">
+                    <mat-checkbox (click)="labelClick('Work')" checked="true">Work</mat-checkbox>
+                </span>
+                <span *ngIf="ms.selectedMail.label.indexOf('Work') === -1">
+                    <mat-checkbox (click)="labelClick('Work')">Work</mat-checkbox>
+                </span>
+            </button>
+            <button mat-menu-item>
+                <span *ngIf="ms.selectedMail.label.indexOf('Payment') != -1">
+                    <mat-checkbox (click)="labelClick('Payment')" checked="true">Payment</mat-checkbox>
+                </span>
+                <span *ngIf="ms.selectedMail.label.indexOf('Payment') === -1">
+                    <mat-checkbox (click)="labelClick('Payment')">Payment</mat-checkbox>
+                </span>
+
+            </button>
+            <button mat-menu-item>
+                <span *ngIf="ms.selectedMail.label.indexOf('Invoice') != -1">
+                    <mat-checkbox (click)="labelClick('Invoice')" checked="true">Invoice</mat-checkbox>
+                </span>
+                <span *ngIf="ms.selectedMail.label.indexOf('Invoice') === -1">
+                    <mat-checkbox (click)="labelClick('Invoice')">Invoice</mat-checkbox>
+                </span>
+
+            </button>
+            <button mat-menu-item>
+                <span *ngIf="ms.selectedMail.label.indexOf('Account') != -1">
+                    <mat-checkbox (click)="labelClick('Account')" checked="true">Account</mat-checkbox>
+                </span>
+                <span *ngIf="ms.selectedMail.label.indexOf('Account') === -1">
+                    <mat-checkbox (click)="labelClick('Account')">Account</mat-checkbox>
+                </span>
+
+            </button>
+        </mat-menu>
+
+
+        <a href="javascript:void(0)" class="text-dark-black m-l-20 d-flex">
+            <mat-icon [ngStyle]="{'color':ms.selectedMail.filter.indexOf('Important') != -1 ? '#ffb22b' : '' }"
+                (click)='iconsClick("Important")'>
+                label_important
+            </mat-icon>
+        </a>
+
+        <a href="javascript:void(0)" class="text-dark-black m-l-20 d-flex">
+            <mat-icon [ngStyle]="{'color':ms.selectedMail.filter.indexOf('Star') != -1 ? '#ffb22b' : '' }"
+                (click)='iconsClick("Star")'>
+                star_outline
+            </mat-icon>
+        </a>
+
+        <div class="ml-auto d-flex">
+            <button mat-icon-button [matMenuTriggerFor]="menu1" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu1="matMenu">
+                <span mat-menu-item (click)="ddlRemoveClick('Read')">
+                    <mat-icon>mail</mat-icon>
+                    <span *ngIf='ms.selectedMail.seen'>Mark as unread</span>
+                    <span *ngIf='!ms.selectedMail.seen'>Mark as read</span>
+                </span>
+                <span mat-menu-item (click)="ddlRemoveClick('Spam')">
+                    <mat-icon>error_outline</mat-icon> Spam
+                </span>
+                <span mat-menu-item (click)="ddlRemoveClick('Trash')">
+                    <mat-icon>delete</mat-icon>Trash
+                </span>
+            </mat-menu>
+        </div>
+
+    </div>
+    <div *ngIf='ms.selectedMail' class="relative b-t" style="height: calc(100vh - 255px);" [perfectScrollbar]="config">
+        <div class="p-20">
+            <div>
+                {{ms.selectedMail.Subject}}
+            </div>
+            <span *ngFor="let l of ms.selectedMail.label" class="m-t-10">
+                <span *ngIf='l==="Personal"' class="label label-info m-l-5"> PERSONAL
+                </span>
+                <span *ngIf='l==="Work"' class="label label-success m-l-5"> WORK
+                </span>
+                <span *ngIf='l==="Payment"' class="label label-danger m-l-5"> Payment
+                </span>
+                <span *ngIf='l==="Invoice"' class="label label-primary m-l-5"> Invoice
+                </span>
+                <span *ngIf='l==="Account"' class="label label-warning m-l-5"> Account
+                </span>
+            </span>
+
+            <div class="d-flex align-items-center m-t-20 p-t-20 b-t">
+                <img [src]="ms.selectedUser.imagePath" class="img-circle" alt="userimg" width="50px" height="50px">
+                <div class="m-l-10">
+                    <h5 class="m-0 font-medium">{{ms.selectedUser.name}}</h5>
+                    <span class="text-muted">To me,</span>
+                </div>
+            </div>
+
+            <div class="m-t-15">
+                {{ms.selectedMail.Message}}
+            </div>
+
+            <div class="m-t-10">
+                <div *ngIf='ms.replyShow'>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Type your reply here</mat-label>
+                        <textarea matInput rows="5"></textarea>
+                    </mat-form-field>
+                    <!-- <textarea id="w3mission" rows="5" placeholder="Type your reply here">Type your reply here </textarea> -->
+                    <div class="d-flex align-items-center bg-light-info p-10">
+                        <div class="d-flex">
+                            <a href="javascript:void(0)" class="link">
+                                <i class="material-icons" style="font-size:20px">attach_file</i>
+                            </a>
+                            <a href="javascript:void(0)" class="link m-l-5">
+                                <i class="fa fa-smile-o ml-3" style="font-size:20px"></i>
+                            </a>
+                            <a href="javascript:void(0)" class="link m-l-5">
+                                <i class="fa fa-photo ml-3" style="font-size:20px"></i>
+                            </a>
+                        </div>
+
+                        <div class="ml-auto">
+                            <button mat-raised-button color="warn" (click)='sendButtonClick()'>Discard</button>
+                            <button mat-raised-button color="accent" class="m-l-10"
+                                (click)='sendButtonClick()'>Send</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div *ngIf='!ms.replyShow'>
+                    <div>
+                        <button mat-raised-button color="primary" (click)='reply()'>
+                            Reply
+                        </button>
+                        <button mat-raised-button color="primary" class="m-l-5" (click)='reply()'>
+                            Reply All
+                        </button>
+                        <button mat-raised-button color="primary" class="m-l-5" (click)='reply()'>
+                            Forward
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

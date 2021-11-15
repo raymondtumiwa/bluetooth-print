@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "190590509864",
+    "project_id": "realmemapps",
+    "storage_bucket": "realmemapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190590509864:android:ec53e3e0e0bdbbd8d8e61d",
+        "android_client_info": {
+          "package_name": "com.onrealme.realme_mapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190590509864-e3c0q4gn364964skoos3gr1de23befot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5O-teEaRnSVnMaRat4eWGZSaiS30tErU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190590509864-e3c0q4gn364964skoos3gr1de23befot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,407 @@
+/*
+Template Name: Material Pro Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+
+$dark-primary: mat-palette($mat-blue);
+$dark-accent: mat-palette($mat-indigo, A200, A100, A400);
+$dark-warn: mat-palette($mat-pink);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+$themecolor: #f44336;
+$themecolor-alt: #e53935;
+$white: #fff;
+$sidebar-text: #8999a0;
+$sidebar-icons: #909394;
+$light: #282c34;
+$inverse: #282c34;
+$dark-bg: #1c2025;
+$border-color: rgba(255,255,255, 0.12);
+
+.h1,
+h1,
+.h2,
+h2,
+.h3,
+h3,
+.h4,
+h4,
+.h5,
+h5,
+.h6,
+h6 {
+	color: $white;
+}
+
+body,
+.mat-card,
+.mat-card p,
+.ql-editor.ql-blank::before,
+.mat-card-subtitle,
+.mat-list-base .mat-list-item {
+	color: $sidebar-text !important;
+}
+
+.ql-editor.ql-blank::before {
+	font-style: normal;
+}
+
+.mat-card .mat-card-title {
+	color: white !important;
+}
+
+/* This is for the navigation*/
+#snav {
+	.mat-nav-list .mat-list-item {
+		a {
+			color: $sidebar-text;
+			mat-icon {
+				color: $sidebar-icons;
+			}
+		}
+		&.selected .sub-item .mat-list-item-content a.selected {
+			color: $white;
+		}
+	}
+}
+
+.mat-drawer-container,
+.mat-drawer,
+.chat-block {
+	background-color: $dark-bg !important;
+}
+
+.chat-app .mat-list-item.active,
+.mat-expansion-panel,
+.mat-select-panel,
+.mat-menu-panel,
+tr.example-element-row:not(.example-expanded-row):active,
+tr.example-element-row:not(.example-expanded-row):hover {
+	background: $dark-bg !important;
+}
+
+.mat-table,
+.mat-paginator,
+.mat-menu-panel,
+.mat-tree,
+.mat-option,
+.mat-autocomplete-panel {
+	background: $light !important;
+}
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical,
+.timeline:before {
+	background-color: $dark-bg !important;
+}
+
+.mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab,
+.ql-bubble .ql-picker-options {
+	background-color: $dark-bg;
+}
+
+ .mat-form-field-appearance-legacy .mat-form-field-underline{
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.mat-checkbox-frame,
+.mat-radio-outer-circle{
+	border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.mat-card-title {
+	font-weight: 400;
+}
+
+/*This is for the chartis js*/
+.ct-label {
+	fill: rgba(255, 255, 255, 0.4);
+	color: rgba(255, 255, 255, 0.4);
+}
+.bg-light,
+.email-sidebar .selected .d-flex,
+.email-right-panel,
+.cal-month-view .cal-cell-row .cal-cell:hover,
+.cal-month-view .cal-cell.cal-has-events.cal-open,
+.cal-month-view .cal-cell-row:hover,
+.chat-middle-box,
+.chat-footer,
+.ngx-datatable.material,
+.cal-month-view .cal-header .cal-cell,
+.cal-cell-top,
+.cal-month-view .cal-days .cal-cell-row,
+.cal-month-view .cal-open-day-events,
+.chat-app .mat-sidenav,
+.ngx-datatable.material .datatable-header .datatable-header-cell,
+.ql-bubble .ql-tooltip,
+.mat-step-header .mat-step-icon {
+	background-color: $light !important;
+}
+
+.ngx-datatable.material .datatable-header .resize-handle,
+.mat-table-sticky:first-child {
+	border-right: 1px solid $border-color !important;
+}
+
+.mat-table-sticky:last-child {
+	border-left: 1px solid $border-color !important;	
+}
+
+.mat-table-sticky {
+	border-top: 1px solid $border-color !important;		
+}
+
+strong {
+	color: $white;
+	font-weight: 500;
+}
+
+.mat-card[_ngcontent-c10] ,
+.mat-card {
+	background-color: $light !important;
+	color: $white;
+}
+
+.mat-card {
+	&.bg-info {
+		background-color: $info !important;
+	}
+	&.bg-purple {
+		background-color: $purple !important;
+	}
+	&.bg-success {
+		background-color: $success !important;
+	}
+}
+
+
+.cal-month-view .cal-days .cal-cell-row {
+	border-bottom: 1px solid $border-color;
+}
+
+.cal-month-view .cal-days,
+.example-container {
+	border: 1px solid $border-color;
+}
+
+.cal-month-view .cal-day-cell:not(:last-child),
+.cal-day-view .cal-hour-rows {
+	border-right: 1px solid $border-color;
+}
+
+// .chat-middle-box {
+// 	color: black;
+// }
+
+a,
+a.link,
+.text-dark-black,
+.ngx-pagination a,
+.ngx-pagination a:hover,
+.ngx-pagination button:hover,
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell,
+.ngx-datatable.material .datatable-header .datatable-header-cell,
+.ngx-datatable.material .datatable-footer,
+.ngx-datatable.material .datatable-footer .datatable-pager a,
+.ngx-datatable.material .datatable-footer .datatable-pager a:hover {
+	color: $sidebar-text;
+}
+
+.ql-snow .ql-stroke {
+	stroke: $white;
+}
+.ql-snow .ql-fill {
+	fill: $white;
+}
+.ql-snow .ql-picker {
+	color: $white;
+}
+.my-drop-zone {
+	background: $inverse;
+}
+.cal-month-view .cal-day-cell:not(:last-child),
+.cal-header,
+.cal-month-view .cal-days,
+.cal-week-view .cal-day-headers,
+.cal-week-view .cal-time-events,
+.cal-day-view .cal-hour-rows,
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow{
+	border-color: $border-color;
+}
+
+.demo-tab-group {
+	border: 1px solid $border-color !important;
+}
+
+.cal-month-view .cal-days .cal-cell-row {
+	border-bottom: 1px solid $border-color;
+}
+
+.cal-header {
+	border-left: 1px solid $border-color;
+	border-right: 1px solid $border-color;
+}
+
+.cal-week-view .cal-hour:not(:last-child) .cal-hour-segment, .cal-week-view .cal-hour:last-child :not(:last-child) .cal-hour-segment,
+.cal-day-view .cal-hour:not(:last-child) .cal-hour-segment, .cal-day-view .cal-hour:last-child :not(:last-child) .cal-hour-segment  {
+	border-bottom-color: $border-color;
+}
+
+.cal-week-view .cal-day-headers .cal-header:first-child,
+.cal-week-view .cal-day-headers .cal-header:not(:last-child),
+.cal-week-view .cal-day-column {
+	border-left-color: $border-color;
+}
+
+.cal-week-view .cal-day-headers .cal-header:not(:last-child) {
+	border-right-color: $border-color;
+}
+
+.page-breadcrumb {
+	background: $inverse;
+}
+
+.apexcharts-canvas text {
+	fill: $sidebar-icons;
+}
+.apexcharts-tooltip {
+	color: $white;
+}
+.apexcharts-tooltip.apexcharts-theme-light,
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title,
+ {
+	border: 0;
+	background: rgba(0, 0, 0, 0.7);
+	box-shadow: none;
+}
+
+.mailbox .message-center a,
+.mailbox .message-center a .mail-content .mail-desc,
+.mailbox .message-center a .mail-content .time {
+	color: $white;
+}
+
+.mailbox .message-center a:hover,
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+	background: $dark-bg;
+}
+
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover, .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group,
+.ql-snow .ql-picker-options {
+	background-color : $dark-bg !important;
+}
+
+
+.ngx-charts-outer text {
+	fill: $white;
+}
+
+.apexcharts-menu,
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+	background: #1c2025;
+	box-shadow: none;
+	border: 0;
+}
+
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg, .apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg, .apexcharts-theme-light .apexcharts-zoomin-icon:hover svg, .apexcharts-theme-light .apexcharts-zoomout-icon:hover svg, .apexcharts-theme-light .apexcharts-reset-icon:hover svg, .apexcharts-theme-light .apexcharts-menu-icon:hover svg
+	 {
+		fill: $sidebar-text;
+	}
+
+
+.cal-month-view .cal-events,
+.cal-week-view .cal-day-headers,
+.cal-week-view .cal-hour-segment,
+.mat-toolbar  {
+	background: $inverse;
+}
+
+.todo-item .edit-view,
+.mat-dialog-container {
+	background: $inverse !important;
+}
+
+.cal-week-view .cal-header.cal-today {
+		background-color: #415840;
+}
+
+.cal-week-view .cal-event,
+.cal-day-view .cal-event {
+	color: $dark;
+	font-weight: 600;
+	background-color: rgb(98 134 162) !important;
+	border-color: rgb(98 134 162) !important;
+}
+
+.bg-white,
+.cal-week-view .cal-time-events .cal-day-columns:not(.cal-resize-active) .cal-hour-segment:hover,
+.cal-week-view .cal-day-headers .cal-header:hover, .cal-week-view .cal-day-headers .cal-drag-over,
+.cal-day-view .cal-hour-segment:hover, .cal-day-view .cal-drag-over .cal-hour-segment,
+.cal-day-view,
+.cal-month-view,
+.cal-week-view {
+	background-color: $inverse;
+}
+
+.notes-item.selected {
+	background-color: $light !important;
+}
+
+.cal-day-view .cal-hour:nth-child(odd),
+.mail-list:hover,
+.inbox-list:hover,
+.mat-datepicker-content .mat-calendar,
+.mat-datepicker-content {
+	background-color: #1c2025;
+}
+
+.cal-header b {
+	font-weight: 100;
+}
+.act {
+		color: $sidebar-text;
+}
+
+
+.bg-light-info {
+	background-color: #346788 !important;
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+	border-color: $border-color;
+}
+
+// taskboard app
+.taskboard .task-decription {
+	color: #b9b9b9 !important;
+}
+.taskboard {
+	.todos {
+		.taskboard-task {
+			background: #2e4b5d !important;
+			color: $white;
+		}
+	}
+	.inprogress {
+		.taskboard-task {
+			background: #9a7e4c !important;
+			color: $white;
+		}
+	}
+	.onhold {
+		.taskboard-task {
+			background: #794c56 !important;
+			color: $white;
+		}
+	}
+	.completed {
+		.taskboard-task {
+			background: #457368 !important;
+			color: $white;
+		}
+	}
+}

@@ -1,0 +1,194 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+            <div fxLayout="column wrap">
+                <div fxLayout="row wrap" class="align-items-center">  
+                    <div xFlex.gt-md="30" fxFlex.gt-lg="30" fxFlex="50">
+                        <mat-form-field>
+                            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="20" class="m-l-10">
+                        <button mat-raised-button  color="primary">Refresh</button>
+                        <!-- <button mat-raised-button (click)="refresh()" color="primary">Refresh</button> -->
+                      </div>
+                      <div fxFlex.gt-md="43" fxFlex.gt-lg="43" fxFlex="20" class="text-right">
+                        <button mat-raised-button (click)="openDialog()" color="primary">New Employee</button>
+                      </div>
+                </div>  
+            
+            <div class="responsive-table" >
+                <mat-table [dataSource]="dataSource" matSort class="table no-wrap">
+
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="no">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> DTPopulate </th>
+                        <td *matCellDef="let row"> {{row.no}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nama">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> No Absen </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.nama}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Progress Column -->
+                    <ng-container matColumnDef="username">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> NIK </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="role">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nama Lengkap </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.role}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Color Column -->
+                    <ng-container matColumnDef="division">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Jenis Kelamin </mat-header-cell>
+                        <mat-cell *matCellDef="let row" [style.color]="row.division"> {{row.division}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Jabatan </mat-header-cell>
+                        <mat-cell *matCellDef="let row" [style.action]="row.action"> {{row.action}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Penemapatan Column -->
+                    <ng-container matColumnDef="penempatan">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Penempatan </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.penempatan}} </mat-cell>
+                    </ng-container>
+
+                    <!-- No Kontrak Column -->
+                    <ng-container matColumnDef="noKontrak">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> No Kontrak </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.noKontrak}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Tgl Masuk Column -->
+                    <ng-container matColumnDef="tanggalMasuk">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Tanggal masuk</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.tanggalMasuk}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Tgl Habis Kontrak Column -->
+                    <ng-container matColumnDef="tanggalHabisKontrak">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Tanggal Habis Kontrak</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.tanggalHabisKontrak}} </mat-cell>
+                    </ng-container>
+
+                    <!-- STARTS HERE -->
+                    <ng-container matColumnDef="alamatKtp">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Alamat Sesuai KTP </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.alamatKtp}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="alamatDomisili">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Alamat Sesuai Domisili</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.tanggalHabisKontrak}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noWa">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nomor WA</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.noWa}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noHp">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nomor HP</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.noHP}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="tempatLahir">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Tempat Lahir</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.tempatLahir}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="tanggalLahir">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Tanggal Lahir</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.tanggalLahir}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noKtp">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nomor KTP</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.noKtp}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noNpwp">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nomor NPWP</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.noNpwp}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="jenisSim">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Jenis SIM</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.jenisSim}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="masaBerlakuSim">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Masa Berlaku SIM</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.masaBerlakuSim}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noStnk">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nomor STNK</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.noStnk}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="statusKawin">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Status Kawin</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.statusKawin}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="jumlahAnak">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Jumlah Anak</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.jumlahAnak}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="namaBank">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nama Bank</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.namaBank}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nomorRekening">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nomor Rekening</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.nomorRekening}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="namaRekening">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nama Rekening</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.namaRekening}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="statusKaryawan">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Status Karyawan </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.statusKaryawan}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="attachment">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Attachment</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.attachment}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="resume">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Resume</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.resume}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action1">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Action</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.action1}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </mat-row>
+                </mat-table>
+
+                <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+        </div>
+        </mat-card-content>
+        </mat-card>
+    </div>
+</div>

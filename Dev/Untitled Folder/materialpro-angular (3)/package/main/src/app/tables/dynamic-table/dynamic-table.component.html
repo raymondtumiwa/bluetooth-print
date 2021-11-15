@@ -1,0 +1,28 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Table dynamically changing the columns displayed <span
+                        class="label label-primary">new</span></mat-card-title>
+                <div class="responsive-table">
+                    <div class="button-row m-b-15 m-t-15">
+                        <button mat-raised-button color="primary" (click)="addColumn()"> Add column </button>
+                        <button mat-raised-button color="primary" (click)="removeColumn()"> Remove column </button>
+                        <button mat-raised-button color="primary" (click)="shuffle()"> Shuffle </button>
+                    </div>
+
+                    <table mat-table [dataSource]="data" class="mat-elevation-z8">
+                        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+                    </table>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

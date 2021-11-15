@@ -1,0 +1,234 @@
+<!-- ============================================================== -->
+<!-- Basic Card -->
+<!-- ============================================================== -->
+<mat-card>
+    <mat-card-content>Simple card just use
+        <code>&lt;mat-card&gt; &lt;mat-card-content&gt; ... &lt;/mat-card-content&gt; &lt;/mat-card&gt;</code>
+        <code><a href="https://material.angular.io/components/card/overview" target="_blank">Official Doc</a></code>
+    </mat-card-content>
+</mat-card>
+<!-- ============================================================== -->
+<!-- Image Card row-->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <!-- Card column -->
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src="assets/images/users/1.jpg" class="img-fluid img-circle" />
+                </div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/big/img4.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                    very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+                </p>
+                <mat-card-actions>
+                    <button mat-raised-button color="accent">LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- Card column -->
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src="assets/images/users/2.jpg" class="img-fluid img-circle" />
+                </div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/big/img3.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                    very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+                </p>
+
+                <mat-card-actions>
+                    <button mat-raised-button color="accent">LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- Card column -->
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src="assets/images/users/3.jpg" class="img-fluid img-circle" />
+                </div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/big/img5.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                    very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+                </p>
+
+                <mat-card-actions>
+                    <button mat-raised-button color="accent">LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Title subtitle Card row-->
+<!-- ============================================================== -->
+<div fxLayout="row">
+    <div fxFlex.gt-sm="100%">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Card with title and footer
+                    <code>&lt;mat-card-title&gt;</code>
+                </mat-card-title>
+                <mat-card-subtitle>This is the subtitle
+                    <code>&lt;mat-card-subtitle&gt;</code>
+                </mat-card-subtitle>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                    anim id est laborum.</p>
+
+                <mat-card-actions>
+                    <button mat-icon-button color="accent">
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon>share</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Half width Card row-->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="50%" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>
+                    <h4 class="m-0">Half width Card</h4>
+                </mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="50%" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>
+                    <h4 class="m-0">Half width Card</h4>
+                </mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Colored Card row-->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header class="bg-primary text-white">
+                <mat-card-title>Card bg-primary</mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header class="bg-info text-white">
+                <mat-card-title>Card bg-info</mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header class="bg-danger text-white">
+                <mat-card-title>Card bg-danger</mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header class="bg-warning text-white">
+                <mat-card-title>Card bg-warning</mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="33.33%">
+        <mat-card>
+            <mat-card-header class="bg-inverse text-white">
+                <mat-card-title>Card bg-inverse</mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header class="bg-success text-white">
+                <mat-card-title>Card bg-success</mat-card-title>
+                <mat-card-subtitle>This is the subtitle</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

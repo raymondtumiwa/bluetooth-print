@@ -1,0 +1,37 @@
+.tasklist {
+  .task-item {
+    padding: 16.5px;
+    cursor: pointer;
+
+    &.active {
+      background-color: #e9ecef;
+    }
+
+    /* &.all {
+        border-left: 5px solid #7460ee;
+      }
+  
+      &.incomplete {
+        border-left: 5px solid #e60a31;
+      }
+  
+      &.complete {
+        border-left: 5px solid #2b9683;
+      } */
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+.todo-item {
+  position: relative;
+  .edit-view {
+    position: absolute;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    top: -4px;
+  }
+}

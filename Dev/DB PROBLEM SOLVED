@@ -1,0 +1,122 @@
+[postgres@192 ~]$ grep pg_hba.conf /var/lib/pgsql/data/postgresql.conf
+#hba_file = 'ConfigDir/pg_hba.conf'	# host-based authentication file
+[postgres@192 ~]$ psql -d
+psql: option requires an argument -- 'd'
+Try "psql --help" for more information.
+[postgres@192 ~]$ psql
+psql (12.6)
+Type "help" for help.
+
+postgres=# \du
+                                   List of roles
+ Role name |                         Attributes                         | Member
+ of 
+-----------+------------------------------------------------------------+-------
+----
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ testuser  |                                                            | {}
+
+postgres=# \du
+                                   List of roles
+ Role name |                         Attributes                         | Member of 
+-----------+------------------------------------------------------------+-----------
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ testuser  |                                                            | {}
+
+postgres=# \du+
+                                          List of roles
+ Role name |                         Attributes                         | Member of | Description 
+-----------+------------------------------------------------------------+-----------+-------------
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}        | 
+ testuser  |                                                            | {}        | 
+
+postgres=# alter user postgres with password 'Grandtour';
+ALTER ROLE
+postgres=# /du
+postgres-# 
+postgres-# exit
+Use \q to quit.
+postgres-# \du
+                                   List of roles
+ Role name |                         Attributes                         | Member of 
+-----------+------------------------------------------------------------+-----------
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ testuser  |                                                            | {}
+
+postgres-# select * from pg_shadow;
+ERROR:  syntax error at or near "/"
+LINE 1: /du
+        ^
+postgres=# select * from pg_shadow
+postgres-# ;
+ usename  | usesysid | usecreatedb | usesuper | userepl | usebypassrls |               passwd                | valuntil | useconfig 
+----------+----------+-------------+----------+---------+--------------+-------------------------------------+----------+-----------
+ testuser |    16385 | f           | f        | f       | f            | md508d555999ab7f489b88cb0eda9f43b5b |          | 
+ postgres |       10 | t           | t        | t       | t            | md59b1fd6b06915c4e4a5cbcf5fd4c8fca0 |          | 
+(2 rows)
+
+postgres=# exit
+[postgres@192 ~]$ grep pg_hba.conf /var/lib/pgsql/data/postgresql.conf
+#hba_file = 'ConfigDir/pg_hba.conf'	# host-based authentication file
+[postgres@192 ~]$ sudo nano /var/lib/pgsql/data/postgresql.conf 
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for postgres: 
+sudo: a password is required
+[postgres@192 ~]$ exit
+logout
+[ondeveloper-1@fedora ~]$ psql
+psql: error: FATAL:  role "ondeveloper-1" does not exist
+[ondeveloper-1@fedora ~]$ psql -u
+psql: invalid option -- 'u'
+Try "psql --help" for more information.
+[ondeveloper-1@fedora ~]$ psql -u postgres
+psql: invalid option -- 'u'
+Try "psql --help" for more information.
+[ondeveloper-1@fedora ~]$ psql -U postgres
+psql: error: FATAL:  Peer authentication failed for user "postgres"
+[ondeveloper-1@fedora ~]$ man psql
+[ondeveloper-1@fedora ~]$ psql -U postgres -w
+psql: error: FATAL:  Peer authentication failed for user "postgres"
+[ondeveloper-1@fedora ~]$ psql -U postgres -W
+Password: 
+psql: error: FATAL:  Peer authentication failed for user "postgres"
+[ondeveloper-1@fedora ~]$ psql -U postgres -W
+Password: 
+psql: error: FATAL:  Peer authentication failed for user "postgres"
+[ondeveloper-1@fedora ~]$ sudo nano /var/
+account/  adm/      cache/    crash/    db/       empty/    ftp/      games/    kerberos/ lib/      local/    lock/     log/      mail/     nis/      opt/      preserve/ run/      snap/     spool/    tmp/      .updated  yp/
+[ondeveloper-1@fedora ~]$ sudo nano /etc/
+Display all 278 possibilities? (y or n)
+[ondeveloper-1@fedora ~]$ sudo nano /etc/p
+pam.d/            passwd            passwdqc.conf     pipewire/         pkgconfig/        plymouth/         polkit-1/         postgresql-setup/ prelink.conf.d/   profile           protocols         purple/           
+papersize         passwd-           pinforc           pkcs11/           pki/              pm/               popt.d/           ppp/              printcap          profile.d/        pulse/            
+[ondeveloper-1@fedora ~]$ sudo nano /var/lib/pgsql/data/pg_hba.conf
+[sudo] password for ondeveloper-1: 
+^Csudo: 1 incorrect password attempt
+[ondeveloper-1@fedora ~]$ sudo nano /var/lib/pgsql/data/pg_hba.conf
+[sudo] password for ondeveloper-1: 
+[ondeveloper-1@fedora ~]$ sudo service postgresql-13 restart
+Redirecting to /bin/systemctl restart postgresql-13.service
+Failed to restart postgresql-13.service: Unit postgresql-13.service not found.
+[ondeveloper-1@fedora ~]$ sudo service postgresql-12 restart
+Redirecting to /bin/systemctl restart postgresql-12.service
+Failed to restart postgresql-12.service: Unit postgresql-12.service not found.
+[ondeveloper-1@fedora ~]$ psql -v
+psql: option requires an argument -- 'v'
+Try "psql --help" for more information.
+[ondeveloper-1@fedora ~]$ psql --version
+psql (PostgreSQL) 12.6
+[ondeveloper-1@fedora ~]$ sudo service postgresql-12 restart
+Redirecting to /bin/systemctl restart postgresql-12.service
+Failed to restart postgresql-12.service: Unit postgresql-12.service not found.
+[ondeveloper-1@fedora ~]$ sudo service postgresql restart
+Redirecting to /bin/systemctl restart postgresql.service
+[ondeveloper-1@fedora ~]$ 
+

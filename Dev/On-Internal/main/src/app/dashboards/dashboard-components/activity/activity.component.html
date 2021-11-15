@@ -1,0 +1,84 @@
+<mat-card>
+    <mat-tab-group>
+        <!-- Tab 1 -->
+        <mat-tab label="Activity">
+            <mat-card-content>
+                <div class="d-flex no-blcok" *ngFor="let mytimeline of mytimelines">
+                    <div class="m-r-20">
+                        <img class="img-circle" width="50" [src]="mytimeline.image" alt="Image of {{mytimeline.from}}">
+                    </div>
+                    <div class="m-b-30 w-100">
+                        <h4 class="m-0">{{mytimeline.from}}
+                            <small class="text-muted">{{mytimeline.time}}</small>
+                        </h4>
+                        <p class="text-muted m-t-5">{{mytimeline.content}}</p>
+                        <div fxLayout="row wrap">
+                            <div fxFlex.gt-sm="20" fxFlex="100">
+                                <img class="img-responsive rounded" [src]="mytimeline.attachment"
+                                    *ngIf="mytimeline.attachment" alt="Image of {{mytimeline.attachment}}">
+                            </div>
+                        </div>
+                        <button mat-raised-button color="{{mytimeline.buttons}}" *ngIf="mytimeline.buttons">Check
+                            Now</button>
+                        <hr class="m-t-30" />
+                    </div>
+                </div>
+
+            </mat-card-content>
+        </mat-tab>
+        <!-- End Tab 1 -->
+        <!-- Tab 2 -->
+        <mat-tab label="Profile">
+            <mat-card-content>
+                <mat-card-title>Form Basic Layouts</mat-card-title>
+                <!-- ============================================================== -->
+                <!-- column -->
+                <!-- ============================================================== -->
+                <form class="basic-form">
+                    <div fxLayout="row wrap">
+                        <!-- column -->
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                            <mat-form-field>
+                                <input matInput placeholder="Some text value">
+                            </mat-form-field>
+                        </div>
+                        <!-- column -->
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                            <mat-form-field>
+                                <input matInput placeholder="EmailId" type="email">
+                            </mat-form-field>
+                        </div>
+                        <!-- column -->
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                            <mat-form-field>
+                                <input matInput placeholder="Password" type="password">
+                            </mat-form-field>
+                        </div>
+
+                        <!-- column -->
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                            <mat-form-field>
+                                <mat-select placeholder="Select">
+                                    <mat-option value="option">Option</mat-option>
+                                    <mat-option value="option">Option2</mat-option>
+                                    <mat-option value="option">Option3</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- column -->
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                            <mat-form-field>
+                                <textarea matInput placeholder="Textarea"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <!-- column -->
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                            <button mat-raised-button color="primary">Update Profile</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-tab>
+    </mat-tab-group>
+</mat-card>

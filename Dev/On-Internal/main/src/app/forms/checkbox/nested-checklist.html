@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>Tasks</span>
+  </mat-toolbar>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let task of tasks">
+        <mat-checkbox [(ngModel)]="task.completed" [checked]="allComplete(task)" [indeterminate]="someComplete(task.subtasks)" (change)="setAllCompleted(task.subtasks, $event.checked)">
+          <h4 class="ma-0">{{task.name}}</h4>
+        </mat-checkbox>
+        <ul class="ml-3">
+          <li *ngFor="let subtask of task.subtasks">
+            <mat-checkbox [(ngModel)]="subtask.completed">
+              {{subtask.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>

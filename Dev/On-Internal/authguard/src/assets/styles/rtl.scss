@@ -1,0 +1,224 @@
+/*
+Template Name: Material Pro Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: scss
+*/
+
+html body {
+  [dir="rtl"] {
+    .p-l-0 {
+      padding-right: 0px;
+      padding-left: unset;
+    }
+
+    .p-l-10 {
+      padding-right: 10px;
+      padding-left: unset;
+    }
+
+    .p-l-20 {
+      padding-right: 20px;
+    }
+
+    .p-r-0 {
+      padding-left: 0px;
+    }
+
+    .p-r-10 {
+      padding-left: 10px;
+    }
+
+    .p-r-20 {
+      padding-left: 20px;
+    }
+
+    .p-r-30 {
+      padding-left: 30px;
+    }
+
+    .p-r-40 {
+      padding-left: 40px;
+    }
+    .ml-auto {
+      margin-right: auto;
+      margin-left: 0;
+    }
+    .m-l-5 {
+      margin-right: 5px;
+    }
+
+    .m-l-10 {
+      margin-right: 10px;
+    }
+
+    .m-l-15 {
+      margin-right: 15px;
+    }
+
+    .m-l-20 {
+      margin-right: 20px;
+    }
+
+    .m-l-30 {
+      margin-right: 30px;
+    }
+
+    .m-l-40 {
+      margin-right: 40px;
+    }
+
+    .m-r-5 {
+      margin-left: 5px;
+    }
+
+    .m-r-10 {
+      margin-left: 10px;
+    }
+
+    .m-r-15 {
+      margin-left: 15px;
+    }
+
+    .m-r-20 {
+      margin-left: 20px;
+    }
+
+    .m-r-30 {
+      margin-left: 30px;
+    }
+
+    .m-r-40 {
+      margin-left: 40px;
+    }
+
+    .mat-card .mat-card-content {
+      position: relative;
+    }
+    .mailbox .message-center a .user-img {
+      margin: 0 0 0 10px;
+    }
+    .float-right {
+      float: left !important;
+    }
+    .float-left {
+      float: right !important;
+    }
+
+    .pull-right {
+      float: left !important;
+    }
+    .pull-left {
+      float: right !important;
+    }
+
+    @media (max-width: 767px){ 
+      .float-sm-left.float-right {
+          float: right !important;
+      }
+    }
+
+    .text-right {
+      text-align: left;
+    }
+
+    .text-left {
+      text-align: right;
+    }
+
+    // breakcrumb
+    .page-breadcrumb .breadcrumb .breadcrumb-item + .breadcrumb-item::after {
+      content: "\e649";
+      font-family: themify;
+      color: #99abb4;
+      font-size: 11px;
+      padding-right: 0.5rem;
+    }
+    .page-breadcrumb .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+      content: "\e649";
+      display: none;
+    }
+
+    .mailbox .message-center a .round {
+      margin: 0 0px 0px 10px;
+    }
+
+    .comment-widgets .comment-row {
+      border-left: 0;
+      border-right: 3px solid transparent;
+      &:hover {
+        border-left: 0;
+        border-right: 3px solid $info;
+      }
+    }
+
+    .comment-footer .action-icons a {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+
+    // sidebar
+    #snav .mat-nav-list .mat-list-item a mat-icon:not(.dd-icon) {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+
+    #snav .mat-nav-list .sub-item a {
+      padding-left: 10px;
+      padding-right: 40px;
+    }
+
+    mat-toolbar .app-search .cl-srh-btn {
+      right: unset;
+      left: 15px;
+    }
+
+    // apexchart tooltip rtl
+
+    .apexcharts-tooltip-series-group {
+      text-align: right;
+    }
+
+    .apexcharts-tooltip-marker {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+
+    .apexcharts-tooltip-text-value,
+    .apexcharts-tooltip-text-z-value {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+    @media (min-width: 1024px) {
+      #snav.mat-sidenav ~ .mat-drawer-content {
+        margin-left: 0 !important; 
+      }
+    }
+
+    .mat-option-text .example-option-img {
+      margin-left: 10px;
+    }
+
+    .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell,
+    .ngx-datatable.material .datatable-header .datatable-header-cell {
+      text-align: right;
+    }
+
+    // apps
+    .chat-block img {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+
+    .employee-list td.mat-cell, .employee-list td.mat-footer-cell, .employee-list th.mat-header-cell,
+    .ticket-list td.mat-cell, .ticket-list td.mat-footer-cell, .ticket-list th.mat-header-cell {
+      text-align: right;
+    }
+
+    .course-header .mat-card-title .course-duration {
+      margin-right: auto;
+      margin-left: unset !important;
+    }
+  }
+  
+}

@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{action}} Task </h2>
+
+<mat-dialog-content class="mat-typography">
+    <form #task="ngForm">
+        <mat-form-field>
+            <input type="text" matInput required id="heading" name="heading" [(ngModel)]="local_data.title"
+                placeholder="Task title">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput required id="descrip" name="descrip" [(ngModel)]="local_data.description"
+                placeholder="Task description">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="doAction()" color="warn" [disabled]='task.invalid'>
+        <span *ngIf="action==='Edit'">Save</span>
+        <span *ngIf="action==='Add'">Add</span>       
+    </button>
+    <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+</div>

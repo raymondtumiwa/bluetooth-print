@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h2>
+<mat-dialog-content class="mat-typography" *ngIf="action != 'Delete'; else elseTemplate">
+  <form #userForm="ngForm">
+    <mat-form-field>
+      <input type="text" matInput required id="creator" name="creator" [(ngModel)]="local_data.creator"
+        placeholder="created by">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput required id="title" name="title" [(ngModel)]="local_data.title"
+        placeholder="ticket title">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput required id="assignee" name="assignee" [(ngModel)]="local_data.assignee"
+        placeholder="assigned to">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <select matNativeControl required name="status" [(ngModel)]="local_data.status">
+        <option value="In Progress">In Progress</option>
+        <option value="Pending">Pending</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput required id="product" name="product" [(ngModel)]="local_data.product"
+        placeholder="product name">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="date" matInput required id="date" name="date" [(ngModel)]="local_data.date" placeholder="date">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<ng-template #elseTemplate>
+  Sure to delete <b>{{local_data.title}}</b>?
+</ng-template>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="doAction()" color="warn">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+</div>

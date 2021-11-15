@@ -1,0 +1,96 @@
+<mat-card>
+    <mat-card-content>
+
+        <span *ngIf='invoiceDetail'>
+            <div fxLayout="row wrap" class="align-items-center m-b-15">
+                <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+                    <h3 class="m-0">#{{invoiceDetail.id}}</h3>
+                </div>
+                <div fxFlex.gt-md="75" class="text-right">
+                    <a routerLink='/apps/invoice'>
+                        <button mat-stroked-button color="primary" class="m-r-10">Back to Invoice</button>
+                    </a>
+                    <a [routerLink]="['/apps/editinvoice/',invoiceDetail.id]">
+                        <button mat-raised-button color="primary">Edit Invoice</button>
+                    </a>
+                </div>
+            </div>
+
+            <hr />
+            <div fxLayout="row wrap" class="align-items-center m-t-15 m-b-15">
+
+                <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+                    <span class="font-medium">
+                        Order Status:
+                    </span>
+                    <h6 class="m-t-5 m-b-0">{{invoiceDetail.status}}</h6>
+                </div>
+                <div fxFlex.gt-md="75" class="text-right">
+                    <span class="font-medium">
+                        Order Date:
+                    </span>
+                    <h6 class="m-t-5 m-b-0">{{invoiceDetail.orderDate| date:'fullDate'}}</h6>
+                </div>
+            </div>
+            <hr />
+
+            <div fxLayout="row wrap" class="align-items-center m-t-15 m-b-15">
+
+                <div fxFlex.gt-md="50" fxFlex.gt-lg="50" fxFlex="100">
+                    <h4 class="m-b-10 font-medium">Bill From</h4>
+                    <h6 class="m-t-0 m-b-5">{{invoiceDetail.billFrom}}</h6>
+                    <h6 class="m-t-0 m-b-5">{{invoiceDetail.billFromEmail}}</h6>
+                    <h6 class="m-t-0 m-b-5">{{invoiceDetail.billFromAddress}}</h6>
+                    <h6 class="m-t-0 m-b-5">{{invoiceDetail.billFromPhone}}
+                    </h6>
+                </div>
+                <div fxFlex.gt-md="50" fxFlex.gt-lg="50" fxFlex="100" class="text-right">
+                    <h4 class="m-b-10 font-medium">Bill To</h4>
+                    <h6 class="m-t-0 m-b-5">
+                        {{invoiceDetail.billTo}}
+                    </h6>
+                    <h6 class="m-t-0 m-b-5">
+                        {{invoiceDetail.billToEmail}}
+                    </h6>
+                    <h6 class="m-t-0 m-b-5">
+                        {{invoiceDetail.billToAddress}}
+                    </h6>
+                    <h6 class="m-t-0 m-b-5">{{invoiceDetail.billToPhone}}
+                    </h6>
+                </div>
+            </div>
+
+
+            <div class="b-all table-responsive">
+                <table mat-table [dataSource]="invoiceDetail.orders" class="no-wrap v-middle">
+                    <ng-container matColumnDef="itemName">
+                        <th class="font-medium font-16" mat-header-cell *matHeaderCellDef>Item Name</th>
+                        <td class="font-normal" mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="unitPrice">
+                        <th class="font-medium font-16" mat-header-cell *matHeaderCellDef> Unit Price </th>
+                        <td class="font-normal" mat-cell *matCellDef="let element"> {{element.unitPrice}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="unit">
+                        <th class="font-medium font-16" mat-header-cell *matHeaderCellDef>Unit</th>
+                        <td class="font-normal" mat-cell *matCellDef="let element"> {{element.units}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="total">
+                        <th class="font-medium font-16" mat-header-cell *matHeaderCellDef> Total Cost </th>
+                        <td class="font-normal" mat-cell *matCellDef="let element"> {{element.unitTotalPrice}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+
+
+            <div class="text-right m-t-30">
+                <h5 class="m-b-5 font-medium">Sub total: {{invoiceDetail.totalCost}}</h5>
+                <span class="font-medium">Vat: 10%</span>
+                <h3 class="m-b-0 b-t p-t-20">Grand Total: {{invoiceDetail.grandTotal}}</h3>
+            </div>
+
+        </span>
+    </mat-card-content>
+</mat-card>

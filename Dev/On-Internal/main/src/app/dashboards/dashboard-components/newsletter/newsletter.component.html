@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Newsletter Campaign</mat-card-title>
+        <mat-card-subtitle>Overview of Newsletter Campaign</mat-card-subtitle>
+        <div id="newsletter-chart" class="d-flex flex-column">
+            <apx-chart [series]="newsletterchartOptions.series" [chart]="newsletterchartOptions.chart"
+                [xaxis]="newsletterchartOptions.xaxis" [stroke]="newsletterchartOptions.stroke"
+                [tooltip]="newsletterchartOptions.tooltip" [dataLabels]="newsletterchartOptions.dataLabels"
+                [legend]="newsletterchartOptions.legend" [colors]="newsletterchartOptions.colors"
+                [markers]="newsletterchartOptions.markers">
+            </apx-chart>
+        </div>
+        <ul class="list-inline text-center p-t-10">
+            <li>
+                <h6 class="text-muted text-info m-0">
+                    <i class="fa fa-circle font-10 m-r-10 "></i>Sent</h6>
+            </li>
+            <li>
+                <h6 class="text-muted  text-success  m-0">
+                    <i class="fa fa-circle font-10 m-r-10"></i>Clicked</h6>
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex.gt-md="100" fxFlex.gt-sm="100" fxFlex="100">
+    <mat-card class="mat-card-top notes-app">
+      <mat-sidenav-container
+        [ngClass]="{ 'side-panel-opened': sidePanelOpened, 'side-panel-closed': !sidePanelOpened }">
+        <mat-sidenav #noteslist [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (open)="sidePanelOpened = true"
+          (close)="sidePanelOpened = false">
+          <mat-toolbar class="no-shadow">
+            <div fxLayout="row" fxFlex="100">
+              <mat-form-field>
+                <mat-label>Search Notes</mat-label>
+                <input matInput [(ngModel)]="searchText">
+              </mat-form-field>
+            </div>
+          </mat-toolbar>
+          <mat-nav-list>
+            <ng-container *ngIf="notes.length > 0; else elseBlock">
+              <mat-list-item *ngFor='let note of notes | filter:searchText' class="notes-item" (click)="onSelect(note);"
+                [class.selected]="note === selectedNote">
+                <div class="note d-flex">
+                  <div>
+                    <span class="note-color bg-{{note.color}}"></span>
+                    <span class="note-title">{{note.title}}</span>
+                    <small class="note-time">{{note.datef | date}}</small>
+                  </div>
+                  <span (click)="removenote(note)" class="remove-note">x</span>
+                </div>
+              </mat-list-item>
+            </ng-container>
+            <ng-template #elseBlock>
+              <p class="m-b-0 text-center font-18 font-bold m-t-40">No Notes Found</p>
+            </ng-template>
+          </mat-nav-list>
+        </mat-sidenav>
+        <mat-toolbar class="no-shadow">
+          <div fxLayout="row" fxFlex="100"  fxLayoutAlign="center center">
+            <button (click)="noteslist.toggle()" class="mr-1" mat-icon-button>
+              <mat-icon>short_text</mat-icon>
+            </button>
+            <div fxFlex class="m-l-20">
+              <button mat-flat-button [matMenuTriggerFor]="menu" class="bg-{{clrName}}">&nbsp;</button>
+              <span class="m-l-10 font-14">Choose color for note</span>
+              <mat-menu #menu="matMenu" class="notes-color-panel">
+                <div mat-menu-item *ngFor="let c of colors">
+                  <button mat-flat-button class="bg-{{c.colorName}}"
+                    (click)="onSelectColor(c.colorName);">&nbsp;</button>
+                </div>
+              </mat-menu>
+              <button mat-raised-button color="primary" (click)="addNoteClick()">Add Notes</button>
+            </div>
+          </div>
+        </mat-toolbar>
+        <mat-card-content class="chat-middle-box">
+          <div class="" *ngIf="notes.length > 0">
+            <textarea matInput [(ngModel)]="selectedNote.title" rows="15" class="note-content"></textarea>
+          </div>
+        </mat-card-content>
+      </mat-sidenav-container>
+    </mat-card>
+  </div>
+</div>

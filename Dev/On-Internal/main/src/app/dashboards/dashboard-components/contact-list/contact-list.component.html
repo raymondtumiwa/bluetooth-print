@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Contact list</mat-card-title>
+
+        <div class="responsive-table m-t-5">
+            <mat-table #table [dataSource]="dataSource" class="contactlist">
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="header-label">name:</span>
+                        <img src="{{element.pic}}" class="img-circle m-r-10" width="30" />
+                        <h5 class="m-0">{{element.name}}</h5>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="header-label">Email:</span>
+                        {{element.email}}
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="designation">
+                    <mat-header-cell *matHeaderCellDef> Post </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span class="header-label">Post:</span>
+                        {{element.designation}}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <mat-paginator #paginator [pageSize]="6" [pageSizeOptions]="[5, 6, 10]">
+        </mat-paginator>
+    </mat-card-content>
+</mat-card>

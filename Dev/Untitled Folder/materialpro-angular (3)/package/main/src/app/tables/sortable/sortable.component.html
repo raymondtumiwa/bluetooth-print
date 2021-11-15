@@ -1,0 +1,40 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Sortable table</mat-card-title>
+                <div class="table-rasponsive">
+                    <mat-table #table [dataSource]="dataSource" matSort style="max-height: 500px; overflow:auto;">
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="position">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="weight">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="symbol">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

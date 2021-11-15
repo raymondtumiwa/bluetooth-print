@@ -1,0 +1,19 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Material Icon list</mat-card-title>
+                <mat-card-subtitle>Simple and easy to use
+                    <code>&lt;mat-icon&gt; ... &lt;/mat-icon&gt;</code>
+                </mat-card-subtitle>
+                <div fxLayout="row wrap">
+                    <div class="icon-box" *ngFor="let maticon of maticons; let i = index">
+                        <mat-icon>{{maticon.iconName}}</mat-icon>
+                        <div class="text-muted">{{maticon.iconClass}}</div>
+                    </div>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

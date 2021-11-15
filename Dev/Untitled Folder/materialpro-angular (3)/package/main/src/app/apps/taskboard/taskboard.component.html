@@ -1,0 +1,111 @@
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex no-block align-items-center b-b m-b-30 p-b-15">
+      <h4 class="font-medium m-b-0 m-t-0">Taskboard</h4>
+      <div class="ml-auto">
+        <button mat-raised-button (click)="openDialog('Add',{})" color="primary">Creare Task</button>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" class="taskboard page-height" cdkDropListGroup>
+      <!-- Column-->
+      <div fxFlex.gt-md="25" fxFlex-md="50" fxFlex.gt-xs="100" fxFlex="100">
+          <div class="taskboard-wrapper">
+            <div class="taskboard-list todos">
+              <div class="taskboard-header text-uppercase">
+                <strong>Todo</strong>
+              </div>
+              <div class="taskboard-cards" [cdkDropListData]="todos" cdkDropList (cdkDropListDropped)="drop($event)">
+                <div class="taskboard-task" cdkDrag *ngFor="let task of todos">
+                  <div class="taskboard-task-title">{{task.title}}</div>
+                  <span class="task-decription">{{task.description}}</span>
+                  <div>
+                    <a mat-icon-button>
+                      <mat-icon (click)="openDialog('Edit',task)">remove_red_eye</mat-icon>
+                    </a>
+                    <button mat-icon-button color='warn' (click)="deleteTask(task)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- Column-->
+      <div fxFlex.gt-md="25" fxFlex-md="50" fxFlex.gt-xs="100" fxFlex="100">
+          <div class="taskboard-wrapper">
+            <div class="taskboard-list inprogress">
+              <div class="taskboard-header text-uppercase">
+                <strong>Inprogress</strong>
+              </div>
+              <div class="taskboard-cards" [cdkDropListData]="inprogress" cdkDropList (cdkDropListDropped)="drop($event)">
+                <div class="taskboard-task" cdkDrag *ngFor="let task of inprogress">
+                  <div class="taskboard-task-title">{{task.title}}</div>
+                  <span class="task-decription">{{task.description}}</span>
+                  <div>
+                    <a mat-icon-button>
+                      <mat-icon (click)="openDialog('Edit',task)">remove_red_eye</mat-icon>
+                    </a>
+                    <button mat-icon-button color='warn' (click)="deleteTask(task)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <!-- Column-->
+      <!-- Column-->
+      <div fxFlex.gt-md="25" fxFlex-md="50" fxFlex.gt-xs="100" fxFlex="100">
+          <div class="taskboard-wrapper">
+            <div class="taskboard-list onhold">
+              <div class="taskboard-header text-uppercase">
+                <strong>Onhold</strong>
+              </div>
+              <div class="taskboard-cards" [cdkDropListData]="onhold" cdkDropList (cdkDropListDropped)="drop($event)">
+                <div class="taskboard-task" cdkDrag *ngFor="let task of onhold">
+                  <div class="taskboard-task-title">{{task.title}}</div>
+                  <span class="task-decription">{{task.description}}</span>
+                  <div>
+                    <a mat-icon-button>
+                      <mat-icon (click)="openDialog('Edit',task)">remove_red_eye</mat-icon>
+                    </a>
+                    <button mat-icon-button color='warn' (click)="deleteTask(task)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- Column-->
+      <div fxFlex.gt-md="25" fxFlex-md="50" fxFlex.gt-xs="100" fxFlex="100">
+          <div class="taskboard-wrapper">
+            <div class="taskboard-list completed">
+              <div class="taskboard-header text-uppercase">
+                <strong>Completed</strong>
+              </div>
+              <div class="taskboard-cards" [cdkDropListData]="completed" cdkDropList (cdkDropListDropped)="drop($event)">
+                <div class="taskboard-task" cdkDrag *ngFor="let task of completed">
+                  <div class="taskboard-task-title">{{task.title}}</div>
+                  <span class="task-decription">{{task.description}}</span>
+                  <div>
+                    <a mat-icon-button>
+                      <mat-icon (click)="openDialog('Edit',task)">remove_red_eye</mat-icon>
+                    </a>
+                    <button mat-icon-button color='warn' (click)="deleteTask(task)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,197 @@
+
+        <!-- Card column -->
+        <h1>New Employee Registration</h1>
+        <div fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex="100" >
+          <mat-card>
+            <mat-card-content>
+              <form [formGroup]="formUser">
+                <div fxLayout="row wrap">
+                            <!-- FIELD NAMA LENGKAP-->
+                            <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                  <input type="text" matInput required id="namaLengkap" name="namaLengkap"
+                                    formControlName="namaLengkap" placeholder="Nama Lengkap">
+                                </mat-form-field>
+                            </div>
+
+                            <!-- FIELD JENIS KELAMIN-->
+                            <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Jenis Kelamin</mat-label>
+                                    <select matNativeControl required formControlName="jenisKelamin">
+                                      <option value="Laki-laki">Laki-Laki</option>
+                                      <option value="Perempuan">Perempuan</option>
+                                    </select>
+                                  </mat-form-field>
+                            </div>    
+                             
+                            <!--FIELD TANGGAL LAHIR-->
+                            <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                    <input type="date" matInput required id="tglLahir" name="tglLahir" formControlName="tglLahir"
+                                      placeholder="Tanggal Lahir">
+                                  </mat-form-field>
+                            </div>
+
+                            <!-- FIELD TEMPAT LAHIR-->
+                            <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                  <input type="text" matInput required id="tempatLahir" name="tempatLahir"
+                                    formControlName="tempatLahir" placeholder="Tempat Lahir">
+                                </mat-form-field>
+                            </div>
+
+                            <!-- FIELD ALAMAT KTP-->
+                            <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                  <input type="text" matInput required id="alamatKTP" name="alamatKTP"
+                                    formControlName="alamatKTP" placeholder="Alamat KTP">
+                                </mat-form-field>
+                            </div>
+
+                            <!-- FIELD ALAMAT DOMISILI -->
+                            <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                              <mat-form-field>
+                                <input type="text" matInput required id="alamatDomisili" name="alamatDomisili"
+                                  formControlName="alamatDomisili" placeholder="Alamat Domisili">
+                              </mat-form-field>
+                          </div>
+
+                          <!-- FIELD NOMOR KTP -->
+                          <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                            <mat-form-field>
+                              <input type="text" matInput required id="nomorKTP" name="nomorkTP"
+                                formControlName="nomorKTP" placeholder="Nomor KTP">
+                            </mat-form-field>
+                        </div>
+                            
+                            <!-- FIELD NPWP -->
+                            <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                    <input type="text" matInput required id="nomorNPWP" name="nomorNPWP"
+                                      formControlName="nomorNPWP" placeholder="Nomor NPWP">
+                                  </mat-form-field>
+                            </div>    
+                             
+                            <!--FIELD JENIS SIM -->
+                            <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Jenis SIM</mat-label>
+                                    <select matNativeControl required formControlName="jenisKelamin">
+                                      <option value="simA">SIM A</option>
+                                      <option value="simB1">SIM B1</option>
+                                      <option value="simB2">SIM B2</option>
+                                      <option value="simC">SIM C</option>
+                                      <option value="simD">SIM D</option>
+                                      <option value="Belum Ada">Belum Ada</option>
+
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                            
+                            <!-- FIELD STATUS KAWIN -->
+                            
+                            <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                                <mat-form-field>
+                                    <mat-label>Status Pernikahan</mat-label>
+                                    <select matNativeControl required formControlName="jenisKelamin">
+                                      <option value="sudah">Sudah Menikah</option>
+                                      <option value="belum">Belum Menikah</option>
+
+                                    </select>
+                                </mat-form-field>
+                            </div>
+
+
+                            <!-- FIELD JUMLAH ANAK -->
+                            <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                              <mat-form-field>
+                                  <mat-label>Jumlah Anak</mat-label>
+                                  <select matNativeControl required formControlName="jumlahAnak">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                  </select>
+                              </mat-form-field>
+                          </div>
+
+                          <!-- FIELD NOMOR WA -->
+                          <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                            <mat-form-field>
+                                <input type="text" matInput required id="nomorWA" name="nomorWA"
+                                  formControlName="nomorWA" placeholder="Nomor WA">
+                            </mat-form-field>
+                          </div>    
+
+
+                          <!-- FIELD NOMOR HP -->
+                          <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                            <mat-form-field>
+                                <input type="text" matInput required id="nomorHP" name="nomorHP"
+                                  formControlName="nomorHP" placeholder="Nomor HP">
+                            </mat-form-field>
+                          </div>   
+
+                          
+                          <!-- FIELD NAMA BANK -->
+                          <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                            <mat-form-field>
+                                <mat-label>Nama Bank</mat-label>
+                                <select matNativeControl required formControlName="namaBank">
+                                  <option value="bca">BCA</option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- FIELD NOMOR REKENING -->
+                        <div class="p-10" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+                          <mat-form-field>
+                              <input type="text" matInput required id="nomorRek" name="nomorRek"
+                                formControlName="nomorRek" placeholder="Nomor Rekening">
+                          </mat-form-field>
+                        </div>   
+
+                        <!-- FIELD NAMA REKENING -->
+                        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                          <mat-form-field>
+                              <input type="text" matInput required id="namaRek" name="namaRek"
+                                formControlName="namaRek" placeholder="Nama Rekening">
+                          </mat-form-field>
+                        </div>   
+
+                        <!-- FIELD JABATAN -->
+                        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                          <mat-form-field>
+                              <input type="text" matInput required id="jabatan" name="jabatan"
+                                formControlName="jabatan" placeholder="Jabatan yang dilamar">
+                          </mat-form-field>
+                        </div> 
+
+                        <!-- FIELD UPLOAD FILE -->
+                        <div fxFlex.gt-sm="50" fxFlex="100" class="m-b-20">
+                          <mat-label class="mb-4">
+                            <div>CV / Resume (max 10 MB)</div>
+                          </mat-label>
+                          <input class="form-control b-b" id="input-file-id" placeholder="file" type="file"
+                            >
+                        </div>
+                </div>
+                        
+              </form>
+                
+            </mat-card-content>
+      
+          </mat-card>
+        </div>
+    </div>
+  
+  
+
+  

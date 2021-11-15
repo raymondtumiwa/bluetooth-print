@@ -1,0 +1,61 @@
+
+<!-- ============================================================== -->
+<!-- Image Card row-->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <!-- Card column -->
+    <div fxFlex.gt-sm="33.33%" fxFlex="100">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src="assets/images/users/rivenlumangkun.jpg" class="img-fluid img-circle" />
+                </div>
+                <mat-card-title>Riven Lumangkun SKOM</mat-card-title>
+                <mat-card-subtitle>IT Programmer</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/users/rivenlumangkun.jpg" alt="Photo of a Shiba Inu">
+            <mat-tab-group>
+                <mat-tab label="Short Info">
+                    <mat-card-content>
+                        <p>
+                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+                        </p>
+                        <mat-card-actions>
+                            <button mat-raised-button color="accent">LIKE</button>
+                            <button mat-button>SHARE</button>
+                        </mat-card-actions>
+                    </mat-card-content>
+                </mat-tab>
+                <mat-tab label="Social Media">
+                    <mat-card-content>
+                        <mat-card-title>Social Media</mat-card-title>
+                        <mat-card-subtitle>Listed below is the social media owned by employee Riven Lumangkun</mat-card-subtitle>
+                        <mat-list>
+                          <mat-list-item *ngFor="let message of messages">
+                            <h3 matLine>{{message.from}}</h3>
+                            <p matLine class="text-muted">{{message.subject}}</p>
+                            <p matLine class="text-muted">{{message.content}}</p>
+                          </mat-list-item>
+                        </mat-list>
+                      </mat-card-content>
+                </mat-tab>
+            </mat-tab-group>
+            
+        </mat-card>
+    </div>
+    <div fxFlex.gt-sm="50%">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>Social Media</mat-card-title>
+            <mat-card-subtitle>Listed below is the social media owned by employee Riven Lumangkun</mat-card-subtitle>
+            <mat-list>
+              <mat-list-item *ngFor="let message of messages">
+                <h3 matLine>{{message.from}}</h3>
+                <p matLine class="text-muted">{{message.subject}}</p>
+                <p matLine class="text-muted">{{message.content}}</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </div>

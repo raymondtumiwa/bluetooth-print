@@ -1,0 +1,130 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Slider</mat-card-title>
+    <mat-card-subtitle>mat-slider allows for the selection of a value from a range via mouse, touch, or keyboard, similar to
+      <code class=""><a href="https://material.angular.io/components/slider/overview">Official Component</a></code>
+    </mat-card-subtitle>
+
+    <h4 class="m-b-0">Basic Slider</h4>
+    <mat-slider color="warn" value="40"></mat-slider>
+
+    <h4 class="m-b-0">value Slider</h4>
+    Label
+    <mat-slider #slidey color="primary" value="40"></mat-slider>
+    {{slidey.value}}
+
+    <h4 class="m-b-0">With Min and Max</h4>
+    <mat-form-field>
+      <input [(ngModel)]="min" matInput> </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="max" matInput>
+    </mat-form-field>
+    <br/>
+    <mat-slider [min]="min" [max]="max" tick-interval="5" #slider2 color="warn"></mat-slider>
+    {{slider2.value}}
+
+
+    <h4 class="m-b-0">Disabled Slider</h4>
+    <mat-slider disabled #slider3></mat-slider>
+    {{slider3.value}}
+
+    <h4 class="m-b-0">Vertical slider</h4>
+    <mat-slider vertical value="50"></mat-slider>
+
+    <h4 class="m-b-0">Selecting a value</h4>
+    <mat-slider min="1" max="100" step="20" #slider5></mat-slider>
+    {{slider5.value}}
+
+    <h4 class="m-b-0">Slider with set tick interval</h4>
+    <mat-slider tick-interval="auto"></mat-slider>
+    <mat-slider tick-interval="9"></mat-slider>
+
+    <h4 class="m-b-0">Slider with Thumb Label</h4>
+    <mat-slider thumb-label></mat-slider>
+
+    <h4 class="m-b-0">Slider with one-way binding</h4>
+    <mat-slider [value]="val" step="40"></mat-slider>
+    <mat-form-field>
+      <input [(ngModel)]="val" matInput>
+    </mat-form-field>
+
+    <h4 class="m-b-0">Slider with two-way binding</h4>
+    <mat-slider [(ngModel)]="demo" step="40"></mat-slider>
+    <mat-form-field>
+      <input [(ngModel)]="demo" matInput>
+    </mat-form-field>
+
+    <h4 class="m-b-0">Inverted slider</h4>
+    <mat-slider invert value="50" tick-interval="5"></mat-slider>
+
+
+
+    <h4 class="m-b-0">Inverted vertical slider</h4>
+    <mat-slider vertical invert thumb-label tick-interval="auto" value="50"></mat-slider>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card>
+  <mat-card-content>
+    <h5 class="example-h2">Slider configuration</h5>
+
+    <section class="example-section">
+      <mat-form-field class="example-margin">
+        <input matInput type="number" placeholder="Value" [(ngModel)]="value">
+      </mat-form-field>
+      <mat-form-field class="example-margin">
+        <input matInput type="number" placeholder="Min value" [(ngModel)]="min">
+      </mat-form-field>
+      <mat-form-field class="example-margin">
+        <input matInput type="number" placeholder="Max value" [(ngModel)]="max">
+      </mat-form-field>
+      <mat-form-field class="example-margin">
+        <input matInput type="number" placeholder="Step size" [(ngModel)]="step">
+      </mat-form-field>
+    </section>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="showTicks">Show ticks</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="autoTicks" *ngIf="showTicks">
+        Auto ticks
+      </mat-checkbox>
+      <mat-form-field class="example-margin" *ngIf="showTicks && !autoTicks">
+        <input matInput type="number" placeholder="Tick interval" [(ngModel)]="tickInterval">
+      </mat-form-field>
+    </section>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="thumbLabel">Show thumb label</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="vertical">Vertical</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="invert">Inverted</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
+    </section>
+
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="result">
+  <mat-card-content>
+    <h5 class="example-h2">Result</h5>
+
+    <mat-slider
+        class="example-margin"
+        [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumbLabel]="thumbLabel"
+        [tickInterval]="tickInterval"
+        [(ngModel)]="value"
+        [vertical]="vertical">
+    </mat-slider>
+  </mat-card-content>
+</mat-card>

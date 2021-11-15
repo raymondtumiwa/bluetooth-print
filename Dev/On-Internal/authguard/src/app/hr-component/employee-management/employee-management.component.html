@@ -1,0 +1,53 @@
+<div fxFlex.gt-sm="100%" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-tab-group dynamicHeight vertical (selectedTabChange)="changeTab($event)">
+          <mat-tab label="Employee Guest">
+            <app-employee-guest *ngIf="activationCode == 0"></app-employee-guest>
+          </mat-tab>
+          <mat-tab label="Employee List">
+            <app-employee-list *ngIf="activationCode == 1"></app-employee-list>
+          </mat-tab>
+          <mat-tab label="Employee Database">
+            <app-database-employee *ngIf="activationCode == 2"></app-database-employee>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+    <!-- <div fxFlex.gt-sm="100%" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+
+                <div fxLayout="row" fxLayoutWrap="wrap">
+                    
+                    <mat-tab-group>
+                        <mat-tab label="Employee Guest">
+                            <mat-card-content>
+                                <p>
+                                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                                    very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+                                </p>
+                            </mat-card-content>
+                        </mat-tab>
+                        <mat-tab label="Employee List">
+                                    <div fxLayout="row">
+                                        <p>he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                                            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.</p>
+                                        <div class="text-right">
+                                            <button mat-raised-button (click)="openDialog()">New Employee</button>
+                                        </div> 
+                                                                     
+                                    </div>
+                        </mat-tab>
+                        <mat-tab label="Employee Database">
+                            <mat-card-content>
+                                <p>he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+                                    very well with mountainous terrain, the Shiba Inu was originally bred for hunting.</p>
+                            </mat-card-content>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div> -->

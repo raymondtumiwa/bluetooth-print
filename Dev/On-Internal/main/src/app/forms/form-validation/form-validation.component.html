@@ -1,0 +1,91 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>Form validation</mat-card-title>
+    <mat-card-subtitle>Angular2 custom validation here is the
+      <a href="https://github.com/yuyang041060120/ng2-validation" target="_blank">official site</a>
+    </mat-card-subtitle>
+    <form [formGroup]="form">
+
+      <div fxLayout="row wrap">
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="First name" [formControl]="form.controls['fname']">
+          </mat-form-field>
+          <mat-hint *ngIf="form.controls['fname'].hasError('required') && form.controls['fname'].touched" class="text-danger font-14">You must include a first name.</mat-hint>
+          <mat-hint *ngIf="form.controls['fname'].hasError('minlength') && form.controls['fname'].touched" class="text-danger font-14">Your first name must be at least 5 characters long.</mat-hint>
+          <mat-hint *ngIf="form.controls['fname'].hasError('maxlength') && form.controls['fname'].touched" class="text-danger font-14">Your first name cannot exceed 10 characters.</mat-hint>
+        </div>
+
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="Email Id" [formControl]="form.controls['email']" type="email">
+          </mat-form-field>
+          <small *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="text-danger font-14">You must include an email address.</small>
+          <small *ngIf="form.controls['email'].errors?.email && form.controls['email'].touched" class="text-danger font-14">You must include a valid email address.</small>
+        </div>
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="Website" [formControl]="form.controls['url']" type="url">
+          </mat-form-field>
+          <small *ngIf="form.controls['url'].hasError('required') && form.controls['url'].touched" class="text-danger font-14">You must include a web address.</small>
+          <small *ngIf="form.controls['url'].errors?.url && form.controls['url'].touched" class="text-danger font-14">You must include a valid web address.</small>
+        </div>
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" [formControl]="form.controls['date']" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-hint *ngIf="form.controls['date'].hasError('required') && form.controls['date'].touched" class="text-danger font-14">You must include a date.</mat-hint>
+          <mat-hint *ngIf="form.controls['date'].errors?.date && form.controls['date'].touched" class="text-danger font-14">You must include a valid date.</mat-hint>
+        </div>
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="Number range (between 5 and 9)" [formControl]="form.controls['range']">
+          </mat-form-field>
+          <small *ngIf="form.controls['range'].hasError('required') && form.controls['range'].touched" class="text-danger font-14">You must enter a number.</small>
+          <small *ngIf="form.controls['range'].errors?.range && form.controls['range'].touched" class="text-danger font-14">Number should be between 5 and 9.</small>
+        </div>
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="Phone number" [formControl]="form.controls['phone']" type="text">
+          </mat-form-field>
+          <small *ngIf="form.controls['phone'].hasError('required') && form.controls['phone'].touched" class="text-danger font-14">You must include phone number.</small>
+          <small *ngIf="form.controls['phone'].errors?.phone && form.controls['phone'].touched" class="text-danger font-14">You must include a valid phone number.</small>
+        </div>
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="Password" [formControl]="form.controls['password']" type="password">
+          </mat-form-field>
+          <small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="text-danger font-14">You must include password.</small>
+        </div>
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-form-field>
+            <input matInput placeholder="Confirm Password" [formControl]="form.controls['confirmPassword']" type="password">
+          </mat-form-field>
+          <small *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].touched" class="text-danger font-14">You must include confirm password.</small>
+          <small *ngIf="form.controls['confirmPassword'].errors?.equalTo" class="text-danger font-14">Passwords do not math.</small>
+        </div>
+
+        <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+          <label class="m-r-20">Gender :</label>
+          <mat-radio-group [formControl]="form.controls['gender']">
+            <mat-radio-button value="male" class="m-r-10">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>
+          <small *ngIf="!form.controls['gender'].valid && form.controls['gender'].touched" class="mat-text-warn">You must select a gender.</small>
+        </div>
+      </div>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

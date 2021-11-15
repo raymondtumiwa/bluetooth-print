@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-header class="bg-success text-white">
+
+      <mat-card-title>
+        <button (click)="mailnav.toggle()" mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+        Inbox
+      </mat-card-title>
+
+    </mat-card-header>
+    <mat-sidenav-container class="email-box" [ngClass]="{ 'side-panel-opened': sidePanelOpened, 'side-panel-closed': !sidePanelOpened }">
+      <mat-sidenav #mailnav [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (open)="sidePanelOpened = true" (close)="sidePanelOpened = false"
+        class="mail-sidebar" [perfectScrollbar]="config" [disabled]="isOver()" class="email-sidebar">
+
+        <div *ngFor="let message of messages; let i = index" [class.selected]="message === selectedMessage">
+          <div (click)="onSelect(message)">
+            <div class="d-flex">
+              <div class="icon-avatar">
+                <img alt="" class="avatar" src="{{message.avatar}}" *ngIf="!message.icon" />
+                <mat-icon [ngClass]="message.iconClass" class="avatar" *ngIf="message.icon">{{message.icon}}</mat-icon>
+              </div>
+              <div>
+                <div class="mail-title" fxShow="false" fxShow.gt-xs style="min-width: 120px;">
+                  <span>{{message.from}}</span>
+                </div>
+                <div class="text-ellipsis">
+                  <span class="text-muted">{{message.subject}}</span>
+                </div>
+                <div class="pl-1 text-xs-right text-ellipsis hide-on-open" fxShow="false" fxShow.gt-sm>
+                  <small class="text-muted">{{ message.date | date: 'fullDate' }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </mat-sidenav>
+
+      <div #mailcontent class="main-content" fxLayout="row" fxLayoutAlign="center start">
+        <div class="messages-list" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <div class="card-body" *ngIf="selectedMessage">
+            <div class="email-right-panel">
+              <div class="d-flex align-items-center m-b-30">
+                <div class="avatar-detail">
+                  <img alt="" class="avatar-lg rounded-circle" src="{{selectedMessage.avatar}}" /> </div>
+                <div class="p-l-20">
+                  <h4 class="font-medium m-b-0">{{selectedMessage.from}} - {{selectedMessage.date | date: 'MMMM d' }} </h4>
+                  <span class="font-14">Reply to: {{selectedMessage.email}}</span>
+                  <br/>
+                  <label class="label label-{{selectedMessage.type}}">{{selectedMessage.tag}}</label>
+                </div>
+              </div>
+              <h4 class="lead mt-0 m-b-30">{{selectedMessage.subject}}</h4>
+              <div [innerHtml]="selectedMessage.body"> </div>
+              <mat-action-row class="button-row">
+                <button mat-raised-button mat-button-sm color="primary" class="mx-xs">Archive</button>
+                <button mat-raised-button mat-button-sm color="accent" class="mx-xs">Delete</button>
+                <button mat-raised-button mat-button-sm class="mx-xs">Forward</button>
+                <button mat-raised-button mat-button-sm class="mx-xs">Trash</button>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-container>
+
+    <button mat-fab color="warn" class="bottom-right" (click)="openDialog()">
+      <mat-icon class="mat-24">create</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>

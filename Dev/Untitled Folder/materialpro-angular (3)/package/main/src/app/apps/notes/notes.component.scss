@@ -1,0 +1,64 @@
+.note-color {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.note {
+  position: relative;
+  padding: 1rem 1rem 1rem 0;
+  border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+  width: 100%;
+}
+
+.notes-item.selected {
+  background-color: #e9ecef;
+}
+
+.note-title {
+  width: 175px;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-title,
+.note-time {
+  margin-left: 15px;
+  display: block;
+}
+
+.note-content {
+  border: none;
+  resize: none;
+  padding: 15px;
+}
+
+.remove-note {
+  margin-left: auto;
+}
+
+.remove-note,
+.notes-item {
+  cursor: pointer;
+}
+
+.notes-app {
+
+  .mat-flat-button {
+    min-width: 20px !important;
+    padding: 0 !important;
+  }
+
+  .mat-list-base .mat-list-item,
+  .mat-list-base .mat-list-option {
+    height: auto !important;
+  }
+
+  .mat-list-base {
+    padding-top: 0 !important;
+  }
+}

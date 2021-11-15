@@ -1,0 +1,76 @@
+<!-- ============================================================== -->
+<!-- Grid-->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+  <!-- Column-->
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Bar Sales Chart</mat-card-title>
+        <mat-card-subtitle>This is the simple example of bar chart</mat-card-subtitle>
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+          [chartType]="barChartType" (chartHover)="chartHovered($event)" [colors]="barChartColors" (chartClick)="chartClicked($event)">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Column-->
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Doughnut Chart</mat-card-title>
+        <mat-card-subtitle>This is the simple example of Doughnut chart</mat-card-subtitle>
+        <canvas baseChart height="150px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#1976d2', '#26dad2', '#dadada']}]"></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Column-->
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Radar Chart</mat-card-title>
+        <mat-card-subtitle>This is the simple example of Radar chart</mat-card-subtitle>
+        <canvas baseChart height="150px" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)" [colors]="radarChartColors">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Column-->
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Pie Chart</mat-card-title>
+        <mat-card-subtitle>This is the simple example of Pie Chart</mat-card-subtitle>
+        <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#1976d2', '#26dad2', '#dadada']}]">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Column-->
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Polar Area Chart</mat-card-title>
+        <mat-card-subtitle>This is the simple example of Polar Area Chart</mat-card-subtitle>
+        <canvas baseChart height="130px" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#1976d2', '#26dad2', '#dadada', '#7460ee', '#ef5350']}]">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Column-->
+  <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Line Chart</mat-card-title>
+        <mat-card-subtitle>This is the simple example of Line Chart</mat-card-subtitle>
+        <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+          [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Recent Messages</mat-card-title>
+        <mat-card-subtitle>Latest Messages on users from Material</mat-card-subtitle>
+        <div class="mailbox message-widget m-t-30">
+            <div class="message-center">
+                <a href="#" *ngFor="let mymessage of mymessages">
+                    <div class="user-img">
+                        <img src="{{mymessage.useravatar}}" alt="user" class="img-circle" width="40">
+                        <span class="profile-status {{mymessage.status}} pull-right"></span>
+                    </div>
+                    <div class="mail-content">
+                        <h5>{{mymessage.from}}</h5>
+                        <span class="mail-desc text-muted">{{mymessage.subject}}</span>
+                        <span class="time text-muted">{{mymessage.time}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

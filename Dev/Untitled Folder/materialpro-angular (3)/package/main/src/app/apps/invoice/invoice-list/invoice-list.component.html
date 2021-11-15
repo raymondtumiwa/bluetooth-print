@@ -1,0 +1,101 @@
+<div fxLayout="row wrap">
+    <div fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap" class="align-items-center">
+                    <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+                        <mat-form-field>
+                            <input matInput placeholder="Search Invoice" (keyup)="filter($event.target.value)">
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex.gt-md="75" class="text-right">
+                        <a routerLink='/apps/addInvoice'>
+                            <button mat-raised-button color="primary">Add Invoice</button>
+                        </a>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap">
+    <div fxFlex="100">
+        <mat-card>
+            <div class="table-responsive">
+                <table mat-table [dataSource]="invoiceList" matSort class="no-wrap m-t-0 v-middle">
+
+                    <ng-container matColumnDef="chk">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox [checked]="allComplete" [indeterminate]="someComplete()"
+                                (change)="setAll($event.checked)">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-checkbox [(ngModel)]="element.completed" (ngModelChange)="updateAllComplete()">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-20">
+                            Id
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="p-20 font-normal"> {{element.id}} </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="billFrom">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-20">
+                            Bill From </th>
+                        <td mat-cell *matCellDef="let element" class="p-20 font-normal"> {{element.billFrom}}
+                        </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="billTo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-20">
+                            Bill To </th>
+                        <td mat-cell *matCellDef="let element" class="p-20 font-normal"> {{element.billTo}}
+                        </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="totalCost">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-20">
+                            Total Cost </th>
+                        <td mat-cell *matCellDef="let element" class="p-20 font-normal"> {{element.totalCost}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-20">
+                            Status</th>
+                        <td mat-cell *matCellDef="let element" class="p-20 font-normal"> {{element.status}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef class="font-medium font-16">Action</th>
+                        <td mat-cell *matCellDef="let element">
+                            <a mat-icon-button [routerLink]="['/apps/viewInvoice/',element.id]">
+                                <mat-icon class="text-info">remove_red_eye</mat-icon>
+                            </a>
+
+                            <button mat-icon-button color='warn' (click)="deleteInvoice(element.id)">
+                                <mat-icon>delete_outline</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5,8,10]" showFirstLastButtons></mat-paginator>
+            </div>
+
+        </mat-card>
+    </div>
+</div>

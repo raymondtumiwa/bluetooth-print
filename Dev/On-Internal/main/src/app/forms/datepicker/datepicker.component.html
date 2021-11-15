@@ -1,0 +1,279 @@
+<!-- ============================================================== -->
+<!-- Fixed height Card Grid-->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Basic Datepicker</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <!-- Grid-->
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker start date</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker2" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 startView="year" [startAt]="startDate"></mat-datepicker>
+                </mat-form-field>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <!-- Grid-->
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker selected value</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker3" placeholder="Angular forms" [formControl]="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker4" placeholder="Angular forms (w/ deserialization)"
+                        [formControl]="serializedDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                    <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker5" placeholder="Value binding" [value]="date.value">
+                    <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                    <mat-datepicker #picker5></mat-datepicker>
+                </mat-form-field>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <!-- Grid-->
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker input and change events</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker6" placeholder="Input & change events"
+                        (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                    <mat-datepicker #picker6></mat-datepicker>
+                </mat-form-field>
+
+                <div class="b-all p-20">
+                    <div *ngFor="let e of events">{{e}}</div>
+                </div>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <!-- Grid-->
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Disabled datepicker</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <p>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="dp1" placeholder="Completely disabled" disabled>
+                        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                        <mat-datepicker #dp1></mat-datepicker>
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="dp2" placeholder="Popup disabled">
+                        <mat-datepicker-toggle matSuffix [for]="dp2" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #dp2></mat-datepicker>
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="dp3" placeholder="Input disabled" disabled>
+                        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </p>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <!-- Grid-->
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker touch UI</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker7" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi="true" #picker7></mat-datepicker>
+                </mat-form-field>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div fxLayout="row wrap">
+    <!-- Grid-->
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker open method</mat-card-title>
+                <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
+                <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker8" placeholder="Choose a date">
+                    <mat-datepicker #picker8></mat-datepicker>
+                </mat-form-field>
+                <button mat-raised-button (click)="picker8.open()">Open</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- Grid-->
+</div>
+
+
+
+
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Changing the datepicker colors</mat-card-title>
+                <mat-form-field color="accent">
+                    <mat-label>Inherited calendar color</mat-label>
+                    <input matInput [matDatepicker]="picker111">
+                    <mat-datepicker-toggle matSuffix [for]="picker111"></mat-datepicker-toggle>
+                    <mat-datepicker #picker111></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field color="accent">
+                    <mat-label>Custom calendar color</mat-label>
+                    <input matInput [matDatepicker]="picker222">
+                    <mat-datepicker-toggle matSuffix [for]="picker222"></mat-datepicker-toggle>
+                    <mat-datepicker #picker222 color="success"></mat-datepicker>
+                </mat-form-field>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker with min & max validation</mat-card-title>
+                <mat-form-field class="example-full-width">
+                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="minpicker"
+                        placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="minpicker"></mat-datepicker-toggle>
+                    <mat-datepicker #minpicker></mat-datepicker>
+                </mat-form-field>
+
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker with filter validation</mat-card-title>
+                <mat-form-field class="example-full-width">
+                    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="filterpicker"
+                        placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="filterpicker"></mat-datepicker-toggle>
+                    <mat-datepicker #filterpicker></mat-datepicker>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker input and change events</mat-card-title>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="pickerevent" placeholder="Input & change events"
+                        (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                    <mat-datepicker-toggle matSuffix [for]="pickerevent"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerevent></mat-datepicker>
+                </mat-form-field>
+
+                <div class="example-events">
+                    <div *ngFor="let e of events">{{e}}</div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Setting the locale code</mat-card-title>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="dp" placeholder="Different locale">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp></mat-datepicker>
+                </mat-form-field>
+
+                <button mat-button (click)="french()">Dynamically switch to French</button>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<!-- New -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Datepicker with custom formats <span class="label label-primary">New</span>
+                </mat-card-title>
+                <mat-form-field class="m-t-15">
+                    <mat-label>Verbose datepicker</mat-label>
+                    <input matInput [matDatepicker]="customdp" [formControl]="customdate">
+                    <mat-datepicker-toggle matSuffix [for]="customdp"></mat-datepicker-toggle>
+                    <mat-datepicker #customdp></mat-datepicker>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<div fxLayout="row wrap">
+  <!-- column -->
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <div class="box p-20 bg-info text-center cursor-pointer" (click)="btnCategoryClick('')">
+        <h1 class="font-light text-white m-0">{{totalCount}}</h1>
+        <h6 class="text-white m-0">Total Tickets</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+  <!-- column -->
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <div class="box p-20 bg-warning text-center cursor-pointer" (click)="btnCategoryClick('In Progress')">
+        <h1 class="font-light text-white m-0">{{Inprogress}}</h1>
+        <h6 class="text-white m-0">In Progress</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+  <!-- column -->
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <div class="box p-20 bg-success text-center cursor-pointer" (click)="btnCategoryClick('Open')">
+        <h1 class="font-light text-white m-0">{{Open}}</h1>
+        <h6 class="text-white m-0">Open</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+  <!-- column -->
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <div class="box p-20 bg-danger text-center cursor-pointer" (click)="btnCategoryClick('Closed')">
+        <h1 class="font-light text-white m-0">{{Closed}}</h1>
+        <h6 class="text-white m-0">Closed</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+</div>
+<div fxLayout="row wrap">
+  <div fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row wrap" class="align-items-center">
+          <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Tickets">
+            </mat-form-field>
+          </div>
+          <div fxFlex.gt-md="75" class="text-right">
+            <button mat-raised-button (click)="openDialog('Add',{})" color="primary">Add Ticket</button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <div fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" class="table  ticket-list no-wrap">
+
+
+
+            <ng-container matColumnDef="creator">
+              <th mat-header-cell *matHeaderCellDef> Creator </th>
+              <td mat-cell *matCellDef="let element"> {{element.creator}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef> Title </th>
+              <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="assignee">
+              <th mat-header-cell *matHeaderCellDef> Assignee </th>
+              <td mat-cell *matCellDef="let element"> {{element.assignee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="product">
+              <th mat-header-cell *matHeaderCellDef> Product </th>
+              <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element" class="action-link">
+                <a (click)="openDialog('Update',element)" class="m-r-10 cursor-pointer"><i class="fa fa-pencil"></i></a>
+                <a (click)="openDialog('Delete',element)" class="m-r-10 cursor-pointer">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

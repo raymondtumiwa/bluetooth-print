@@ -1,0 +1,144 @@
+<mat-card>
+
+    <mat-card-header class="bg-success text-white">
+        <mat-card-title>
+            <button (click)="mailnav.toggle()" mat-icon-button>
+                <mat-icon>short_text</mat-icon>
+            </button>
+            Inbox
+        </mat-card-title>
+
+    </mat-card-header>
+    <mat-sidenav-container class="email-box"
+        [ngClass]="{ 'side-panel-opened': sidePanelOpened, 'side-panel-closed': !sidePanelOpened }">
+        <mat-sidenav #mailnav [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (open)="sidePanelOpened = true"
+            (close)="sidePanelOpened = false" class="mail-sidebar" [disabled]="isOver()" [perfectScrollbar]="config"
+            class="email-sidebar">
+            <div class="bg-light-info text-dark p-l-20 p-r-20">
+                <div class="d-flex align-items-center">
+                    <img src="assets/images/users/1.jpg" width="45" class="img-rounded" />
+                    <div class="m-l-10">
+                        <h5 class="m-0 font-medium">John Deo</h5>
+                        <span class="text-muted font-14">johndeo@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <mat-card-content>
+                <button mat-raised-button (click)="openDialog()" color="warn" class="w-100 m-b-15 btn-block"> Compose
+                </button>
+                <div class="b-t">
+                    <h5 class="text-muted text-uppercase">Mailbox</h5>
+                </div>
+                <div *ngFor='let mail of mailboxes' (click)='mailboxesChanged(mail.name)'>
+                    <div class="d-flex align-items-center inbox-list" [class.bg-light]="mail.active">
+                        <mat-icon class="m-r-10 font-20">{{mail.icon}} </mat-icon>
+                        <span class="font-medium">{{mail.name}}</span>
+                        <div class="ml-auto">
+                            <span *ngIf='mail.name==="Inbox"'>
+                                <span class="label label-primary" color="primary" selected>
+                                    {{ms.inboxCount}}
+                                </span>
+                            </span>
+                            <span *ngIf='mail.name==="Draft"'>
+                                <span class="label label-warning" selected>
+                                    {{ms.draftCount}}
+                                </span>
+                            </span>
+                            <span *ngIf='mail.name==="Spam"'>
+                                <span class="label label-danger" selected>
+                                    {{ms.spamCount}}
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-t">
+                    <h5 class="text-muted text-uppercase m-t-20 m-b-10">FILTERS</h5>
+                </div>
+                <div>
+                    <div *ngFor='let fil of filters' (click)='filtersClick(fil.name)'>
+                        <div class="d-flex align-items-center inbox-list" [class.bg-light]="fil.active">
+                            <mat-icon class="m-r-10 font-20">{{fil.icon}} </mat-icon>
+                            <span class="font-medium">{{fil.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-t">
+                    <h5 class="text-muted text-uppercase m-t-20 m-b-10">LABELS</h5>
+                </div>
+                <div>
+                    <div *ngFor='let lab of labels' (click)='labelChange(lab.name)'>
+                        <div class="d-flex align-items-center inbox-list" [class.bg-light]="lab.active">
+                            <mat-icon class="m-r-10 font-20" [style.color]="lab.color">{{lab.icon}}</mat-icon>
+                            <span class="font-medium">{{lab.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+
+        </mat-sidenav>
+        <div fxLayout="row wrap" class="oh bg-white">
+
+            <div fxFlex.lg="40" fxFlex.gt-lg="30" fxFlex.sm="100" fxFlex="100" class="b-r">
+                <div class="p-20 b-b d-flex align-items-center">
+                    <h5 class="font-medium m-0">{{ms.topLable}}</h5>
+                    <div class="ml-auto">
+                        <pagination-controls (pageChange)="p=$event" previousLabel="" nextLabel="">
+                        </pagination-controls>
+                    </div>
+                </div>
+                <div class="relative" style="height: calc(100vh - 260px);" [perfectScrollbar]="config">
+                    <div *ngFor="let mail of ms.mailList | paginate:{itemsPerPage:6 , currentPage:p} ; let i = index,"
+                        (click)="mailSelected(mail)">
+                        <div class="mail-list p-20 b-b">
+                            <div class="d-flex align-items-start">
+                                <img [src]="ms.users[i].imagePath" class="img-circle" alt="userimg" width="50px"
+                                    height="50px">
+                                <div class="m-l-10">
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="m-0 font-medium">{{ms.users[i].name}}</h5>
+                                        <div class="m-l-5">
+                                            <div class="d-flex justify-content-center">
+                                                <span *ngIf='mail.filter.indexOf("Important") !== -1'
+                                                    class="m-l-5 d-flex">
+                                                    <mat-icon class="text-warning font-20">label_important</mat-icon>
+                                                </span>
+                                                <span *ngIf='mail.filter.indexOf("Star") !== -1' class="m-l-5 d-flex">
+                                                    <mat-icon class="text-warning font-20">star_outline</mat-icon>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="font-14 text-muted text-truncate"> {{mail.Subject  | slice:0:20}}..
+                                    </span>
+                                </div>
+                                <div class="ml-auto text-right">
+                                    <span class="text-muted font-14 text-nowrap">{{mail.date | date:'dd-MMM'}}</span>
+                                </div>
+                            </div>
+                            <p>
+                                <span class="font-medium" *ngIf='!mail.seen'> {{mail.Message | slice:0:70}}.. </span>
+                                <span *ngIf='mail.seen'> {{mail.Message | slice:0:70}}.. </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <pagination-controls (pageChange)="p=$event"></pagination-controls> -->
+            </div>
+
+
+            <div fxFlex.lg="60" fxFlex.gt-lg="70" fxFlex.sm="100" fxFlex="100"
+                class="d-flex align-items-center justify-content-center detail-part" [class.movetodetail]='ms.addClass'>
+                <div *ngIf='ms.selectedMail ===null' class="text-center d-md-none">
+                    <mat-icon class="display-5 m-r-15">mail_outline</mat-icon>
+                    <h3> Select a mail to read. </h3>
+                </div>
+                <div *ngIf='ms.selectedMail !=null' class="w-100">
+                    <app-maildetail></app-maildetail>
+                </div>
+
+            </div>
+        </div>
+    </mat-sidenav-container>
+</mat-card>

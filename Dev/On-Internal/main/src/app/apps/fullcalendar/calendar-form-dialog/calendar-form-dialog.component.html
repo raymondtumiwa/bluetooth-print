@@ -1,0 +1,54 @@
+<h4 class="m-t-0 p-l-5">Add</h4>
+
+<div class="event-dialog-wrapper">
+  <div mat-dialog-content class="p-16 m-0">
+
+    <form name="eventForm" [formGroup]="eventForm" class="event-form" fxFlex>
+      <div fxLayout="row wrap" fxLayout.lt-sm="column">
+
+        <div fxFlex="100">
+          <mat-form-field class="full-width">
+            <input matInput name="title" formControlName="title" placeholder="Add Title" required>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="100" formGroupName="color">
+          <mat-form-field fxFlex>
+            <input matInput placeholder="Change Color" type="color" formControlName="primary"
+              (colorPickerChange)="eventForm.patchValue({color:{primary: event.color.primary}})" />
+
+              <!-- <input matInput placeholder="Change Color" type="color" [(ngModel)]="data?.event.color.primary"> -->
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="100">
+          <mat-form-field fxFlex>
+            <input matInput [matDatepicker]="startDateDP" placeholder="Start Date" name="startDate"
+              formControlName="start">
+            <mat-datepicker-toggle matSuffix [for]="startDateDP"></mat-datepicker-toggle>
+            <mat-datepicker #startDateDP></mat-datepicker>
+          </mat-form-field>
+          <span fxFlex="16px"></span>
+
+          <mat-form-field fxFlex>
+            <input matInput [matDatepicker]="endDateDP" placeholder="End Date" name="endDate" formControlName="end">
+            <mat-datepicker-toggle matSuffix [for]="endDateDP"></mat-datepicker-toggle>
+            <mat-datepicker #endDateDP></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="dialogRef.close({action: 'save', event: eventForm.value})"
+        [disabled]="eventForm.invalid" aria-label="SAVE">
+        Save
+      </button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+
+
+
+</div>

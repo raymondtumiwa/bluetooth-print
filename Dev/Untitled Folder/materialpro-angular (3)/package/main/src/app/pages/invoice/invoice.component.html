@@ -1,0 +1,75 @@
+<mat-card>
+  <mat-card-content>
+    <div class="mb-1">
+      <h1 class="mt-0">
+        <strong>INVOICE</strong>
+      </h1>
+    </div>
+
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-xs="50" fxFlex="100">
+        <h4 class="text-danger font-bold">Material Pro Admin</h4>
+        <div fxLayout="column">
+          <span>Invoice No: #0001</span>
+          <span>E 104, Dharti-2,</span>
+          <span>Nr' Viswakarma Temple,
+            <br/>Talaja Road, Bhavnagar - 364002</span>
+        </div>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex="100" class="text-right">
+        <h4 class="font-bold">Gaala &amp; Sons,</h4>
+        <div fxLayout="column">
+          <span>company@address.com</span>
+          <span>E 105, ODharti-2,</span>
+          <span>Nr' Viswakarma Temple,
+            <br/>Talaja Road, Ahmedabad - 364002</span>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-content class="table-rasponsive">
+    <ngx-datatable class="material" [rows]="invoiceItems" [columnMode]="'flex'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="'auto'">
+      <ngx-datatable-column name="Description" [flexGrow]="4">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{row.title}}</strong>
+          <br/>
+          <span class="mat-text-muted">{{row.subtitle}}</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Unit Price" [flexGrow]="1">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{row.price | currency:'USD':'symbol':'1.2-2'}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Quantity" [flexGrow]="1">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{row.quantity}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Total" [flexGrow]="1">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <strong>{{ (row.price * row.quantity) | currency:'USD':'symbol':'1.2-2'}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </mat-card-content>
+
+  <mat-card-content class="bg-light">
+    <div class="d-flex align-items-center">
+
+      <div class="text-right ml-auto">
+        <h6 class="text-uppercase text-md ma-0 text-bold">Subtotal :</h6>
+        <h6 class="text-uppercase text-md ma-0 text-bold">Tax (2%) :</h6>
+        <h6 class="text-uppercase text-sm ma-0 text-bold">Total :</h6>
+      </div>
+      <div class="m-l-10">
+        <h4 class="font-medium">{{getSubTotal() | currency:'USD':'symbol':'1.2-2'}}</h4>
+        <h4 class="font-medium">{{getCalculatedTax() | currency:'USD':'symbol':'1.2-2'}}</h4>
+        <h4 class="font-medium">{{ getTotal() | currency:'USD':'symbol':'1.2-2'}}</h4>
+      </div>
+    </div>
+  </mat-card-content>
+
+
+</mat-card>
