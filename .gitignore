@@ -74,3 +74,11 @@ build/
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 pubspec.lock
+
+# my app
+example/blue
+example/my_app/android
+example/my_app/ios
+example/my_app/web
+example/my_app/.metadata
+example/my_app/analysis_options.yaml
